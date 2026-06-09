@@ -1,0 +1,3020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Turning Pens — Penn State Industries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #1a1208;
+    --bark:      #3d2b1a;
+    --walnut:    #6b4226;
+    --cedar:     #a0522d;
+    --grain:     #c8956c;
+    --sand:      #e8d5b7;
+    --cream:     #f7f1e8;
+    --white:     #fefcf8;
+    --pine:      #2d4a2d;
+    --moss:      #4a7c4a;
+    --sage:      #7aad6a;
+    --accent:    #c0392b;
+    --gold:      #b8860b;
+    --r:         8px;
+    --r-lg:      16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── UTILITY ─── */
+  .serif { font-family: 'Playfair Display', Georgia, serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--cedar);
+  }
+
+  /* ─── INTRO BAND ─── */
+  .intro-band {
+    background: var(--white);
+    border-bottom: 2px solid var(--sand);
+    padding: 0 24px;
+  }
+  .intro-band-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 32px;
+    min-height: 56px; flex-wrap: wrap; padding: 10px 0;
+  }
+  .intro-band-text {
+    display: flex; align-items: baseline; gap: 10px;
+    flex: 1; min-width: 200px;
+  }
+  .intro-band-label {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--cedar); white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .intro-band-copy {
+    font-size: 13px; color: var(--walnut); opacity: .7; line-height: 1.4;
+  }
+  .intro-band-links {
+    display: flex; gap: 4px; flex-wrap: wrap;
+  }
+  .intro-link {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 20px;
+    border: 1px solid var(--sand);
+    font-size: 13px; font-weight: 500; color: var(--bark);
+    text-decoration: none; white-space: nowrap;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .intro-link:hover {
+    background: var(--cream); border-color: var(--cedar); color: var(--cedar);
+  }
+  .intro-link-icon { font-size: 12px; }
+
+  /* ─── TOPBAR ─── */
+  .topbar {
+    background: var(--pine);
+    color: var(--sand);
+    font-size: 13px;
+    text-align: center;
+    padding: 10px 24px;
+    letter-spacing: .02em;
+  }
+  .topbar a { color: var(--sage); text-decoration: none; font-weight: 500; }
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--sand);
+    padding: 0 24px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(26,18,8,.06);
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center;
+    height: 64px; gap: 32px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--bark); text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo span { color: var(--cedar); }
+  .nav-links {
+    display: flex; gap: 24px; list-style: none;
+    flex: 1;
+  }
+  .nav-links a {
+    font-size: 13px; font-weight: 500;
+    color: var(--bark); text-decoration: none;
+    opacity: .7; transition: opacity .15s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a.active { opacity: 1; color: var(--cedar); border-bottom: 2px solid var(--cedar); padding-bottom: 2px; }
+  .nav-cta {
+    background: var(--pine); color: var(--white);
+    padding: 8px 20px; border-radius: var(--r);
+    font-size: 13px; font-weight: 500;
+    text-decoration: none; flex-shrink: 0;
+    transition: background .15s;
+  }
+  .nav-cta:hover { background: var(--bark); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--bark);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(160,82,45,.35) 0%, transparent 65%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%233d2b1a'/%3E%3Ccircle cx='1' cy='1' r='.5' fill='rgba(200,149,108,.08)'/%3E%3Ccircle cx='3' cy='3' r='.5' fill='rgba(200,149,108,.08)'/%3E%3C/svg%3E");
+    color: var(--cream);
+    padding: 80px 24px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--cedar), var(--gold), var(--cedar));
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,149,108,.18);
+    border: 1px solid rgba(200,149,108,.35);
+    color: var(--grain);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--grain); }
+  .hero-sub {
+    font-size: 17px; line-height: 1.65;
+    color: rgba(232,213,183,.8);
+    margin-bottom: 32px;
+    max-width: 460px;
+  }
+  .hero-stats {
+    display: flex; gap: 32px;
+    margin-bottom: 36px;
+  }
+  .hero-stat strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; color: var(--grain);
+  }
+  .hero-stat span {
+    font-size: 12px; color: rgba(232,213,183,.65);
+    letter-spacing: .02em;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--cedar);
+    color: var(--white);
+    padding: 14px 28px; border-radius: var(--r);
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; display: inline-block;
+    transition: background .15s, transform .1s;
+  }
+  .btn-primary:hover { background: var(--walnut); transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--sand);
+    padding: 14px 20px;
+    font-size: 14px; font-weight: 400;
+    text-decoration: none; display: inline-block;
+    opacity: .75; transition: opacity .15s;
+  }
+  .btn-ghost:hover { opacity: 1; }
+
+  /* Hero card */
+  .hero-card {
+    background: var(--cream);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  }
+  .hero-card-img {
+    height: 240px;
+    background: #f5f5f3;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-card-img img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    display: block;
+  }
+  .hero-card-body { padding: 20px 24px 24px; color: var(--ink); }
+  .rec-label {
+    font-size: 10px; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--cedar);
+    margin-bottom: 6px;
+  }
+  .rec-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 600; color: var(--bark);
+    margin-bottom: 4px; line-height: 1.3;
+  }
+  .rec-desc { font-size: 13px; color: var(--walnut); opacity: .7; margin-bottom: 14px; }
+  .rec-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+  .rec-price { font-size: 26px; font-weight: 600; color: var(--pine); }
+  .rec-was { font-size: 14px; color: var(--walnut); opacity: .5; text-decoration: line-through; }
+  .rec-save {
+    background: var(--pine); color: var(--white);
+    font-size: 11px; font-weight: 500;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .rec-includes {
+    list-style: none; display: flex; flex-direction: column; gap: 4px;
+    margin-bottom: 16px;
+  }
+  .rec-includes li {
+    font-size: 12px; color: var(--bark);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .rec-includes li::before {
+    content: '✓'; color: var(--moss); font-weight: 600; font-size: 11px;
+  }
+  .btn-card {
+    display: block; width: 100%;
+    background: var(--cedar); color: var(--white);
+    text-align: center; padding: 12px;
+    border-radius: var(--r); font-size: 14px; font-weight: 500;
+    text-decoration: none; transition: background .15s;
+  }
+  .btn-card:hover { background: var(--walnut); }
+
+  /* ─── SECTION CHROME ─── */
+  .section { padding: 80px 24px; }
+  .section-alt { background: var(--white); }
+  .section-dark { background: var(--bark); color: var(--cream); }
+  .section-pine { background: var(--pine); color: var(--cream); }
+
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15; color: var(--bark);
+    margin-top: 8px;
+  }
+  .section-dark .section-header h2,
+  .section-pine .section-header h2 { color: var(--cream); }
+  .section-dark .eyebrow { color: var(--grain); }
+  .section-pine .eyebrow { color: var(--sage); }
+  .section-header p {
+    font-size: 17px; color: var(--walnut); opacity: .75;
+    max-width: 520px; margin: 12px auto 0;
+  }
+  .section-dark .section-header p,
+  .section-pine .section-header p { color: rgba(232,213,183,.7); opacity: 1; }
+
+  /* ─── PATH CHOOSER ─── */
+  .path-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px; max-width: 1000px; margin: 0 auto;
+  }
+  .path-card {
+    border: 2px solid var(--sand);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    background: var(--white);
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s, transform .15s;
+    text-decoration: none; color: inherit; display: block;
+  }
+  .path-card:hover {
+    border-color: var(--cedar);
+    box-shadow: 0 8px 32px rgba(160,82,45,.15);
+    transform: translateY(-2px);
+  }
+  .path-card.featured { border-color: var(--cedar); background: #fdf7f0; }
+  .path-icon {
+    font-size: 36px; margin-bottom: 14px; display: block;
+  }
+  .path-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; color: var(--bark);
+    margin-bottom: 8px;
+  }
+  .path-card p { font-size: 14px; color: var(--walnut); opacity: .75; line-height: 1.5; margin-bottom: 16px; }
+  .path-cta {
+    font-size: 13px; font-weight: 500;
+    color: var(--cedar); display: flex; align-items: center; gap: 4px;
+  }
+  .path-cta::after { content: '→'; }
+  .path-badge {
+    display: inline-block;
+    background: var(--cedar); color: var(--white);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  /* ─── HOW IT WORKS STEPS ─── */
+  .steps { display: flex; flex-direction: column; gap: 0; max-width: 900px; margin: 0 auto; }
+  .step {
+    display: grid; grid-template-columns: 64px 1fr;
+    gap: 32px; padding: 36px 0;
+    border-bottom: 1px solid var(--sand);
+    position: relative;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--cedar);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--cedar);
+    flex-shrink: 0;
+    background: var(--white);
+  }
+  .step-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--bark); margin-bottom: 6px;
+  }
+  .step-content p { font-size: 15px; color: var(--walnut); opacity: .8; margin-bottom: 14px; }
+  .step-products {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .step-tag {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    color: var(--walnut);
+    font-size: 12px; font-weight: 500;
+    padding: 5px 12px; border-radius: 20px;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+  }
+  .step-tag:hover { background: var(--sand); border-color: var(--grain); }
+  .step-tag.required { border-color: var(--cedar); color: var(--cedar); background: #fdf7f0; }
+
+  /* ─── PRODUCT GRID ─── */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    transition: box-shadow .2s, transform .15s;
+    text-decoration: none; color: inherit; display: block;
+  }
+  .product-card:hover {
+    box-shadow: 0 8px 28px rgba(61,43,26,.12);
+    transform: translateY(-2px);
+  }
+  .product-card.featured { border-color: var(--cedar); border-width: 2px; }
+  .product-img {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .product-img img { width: 100%; height: 100%; object-fit: cover; }
+  .product-img-placeholder {
+    background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 100%);
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px;
+  }
+  .product-body { padding: 16px; }
+  .product-label {
+    font-size: 10px; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--cedar); margin-bottom: 4px;
+  }
+  .product-name {
+    font-size: 14px; font-weight: 500; color: var(--bark);
+    line-height: 1.35; margin-bottom: 10px;
+  }
+  .product-price-row { display: flex; align-items: baseline; gap: 8px; }
+  .product-price { font-size: 20px; font-weight: 600; color: var(--pine); }
+  .product-was { font-size: 12px; color: var(--walnut); opacity: .45; text-decoration: line-through; }
+  .product-save {
+    font-size: 11px; font-weight: 500; color: var(--pine);
+    background: rgba(45,74,45,.1); padding: 2px 6px; border-radius: 4px;
+  }
+  .product-cta {
+    display: block; margin-top: 12px;
+    background: var(--bark); color: var(--white);
+    text-align: center; padding: 9px;
+    border-radius: var(--r); font-size: 13px; font-weight: 500;
+    transition: background .15s;
+  }
+  .product-card:hover .product-cta { background: var(--cedar); }
+  .product-featured-banner {
+    background: var(--cedar); color: var(--white);
+    font-size: 11px; font-weight: 500; text-align: center;
+    padding: 5px; letter-spacing: .06em; text-transform: uppercase;
+  }
+
+  /* ─── VIDEO GRID ─── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 900px; margin: 0 auto;
+  }
+  .video-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(200,149,108,.2);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    text-decoration: none; color: inherit; display: block;
+  }
+  .video-card:hover { border-color: var(--grain); background: rgba(255,255,255,.1); }
+  .video-thumb {
+    position: relative; height: 130px;
+    background: rgba(0,0,0,.3);
+    overflow: hidden;
+  }
+  .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .85; }
+  .video-play {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .video-play-btn {
+    width: 44px; height: 44px;
+    background: rgba(160,82,45,.9);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,.4);
+    transition: transform .2s, background .2s;
+  }
+  .video-card:hover .video-play-btn { transform: scale(1.1); background: var(--cedar); }
+  .video-play-btn svg { width: 18px; height: 18px; fill: white; margin-left: 2px; }
+  .video-info { padding: 14px 16px; }
+  .video-num {
+    font-size: 10px; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--grain); margin-bottom: 4px;
+  }
+  .video-title { font-size: 14px; font-weight: 500; color: var(--cream); line-height: 1.35; }
+
+  /* ─── COST TRANSPARENCY ─── */
+  .cost-table { max-width: 680px; margin: 0 auto; }
+  .cost-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--sand);
+    font-size: 15px;
+  }
+  .cost-row:last-child { border-bottom: none; }
+  .cost-row.total {
+    font-weight: 600; font-size: 18px;
+    color: var(--pine);
+    border-top: 2px solid var(--cedar);
+    border-bottom: none;
+    padding-top: 20px; margin-top: 4px;
+  }
+  .cost-label { color: var(--bark); }
+  .cost-sub { font-size: 12px; color: var(--walnut); opacity: .6; display: block; }
+  .cost-price { color: var(--bark); font-weight: 500; white-space: nowrap; }
+  .cost-note {
+    background: #f0f7f0;
+    border-left: 3px solid var(--moss);
+    padding: 14px 18px;
+    border-radius: 0 var(--r) var(--r) 0;
+    margin-top: 24px;
+    font-size: 14px; color: var(--pine);
+  }
+
+  /* ─── FAQ ─── */
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--sand);
+  }
+  .faq-q {
+    width: 100%; background: none; border: none; cursor: pointer;
+    padding: 20px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; font-weight: 500; color: var(--bark);
+    text-align: left; gap: 16px;
+  }
+  .faq-q:hover { color: var(--cedar); }
+  .faq-icon {
+    width: 24px; height: 24px; flex-shrink: 0;
+    border: 1.5px solid currentColor; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; transition: transform .25s; color: var(--cedar);
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 15px; color: var(--walnut); line-height: 1.65;
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, padding .3s;
+  }
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding-bottom: 20px;
+  }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--sand);
+    padding: 24px;
+  }
+  .trust-items {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: center;
+    gap: 48px; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 500; color: var(--bark);
+  }
+  .trust-item span { font-size: 20px; }
+
+  /* ─── CTA BAND ─── */
+  .cta-band {
+    background: var(--cedar);
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--white); margin-bottom: 12px;
+  }
+  .cta-band p { color: rgba(255,255,255,.75); font-size: 17px; margin-bottom: 28px; }
+  .cta-band-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    background: var(--white); color: var(--cedar);
+    padding: 14px 28px; border-radius: var(--r);
+    font-size: 15px; font-weight: 500;
+    text-decoration: none;
+    transition: background .15s;
+  }
+  .btn-white:hover { background: var(--cream); }
+  .btn-outline-white {
+    border: 2px solid rgba(255,255,255,.5); color: var(--white);
+    padding: 12px 28px; border-radius: var(--r);
+    font-size: 15px; font-weight: 400;
+    text-decoration: none;
+    transition: border-color .15s;
+  }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  /* ─── SOCIAL PROOF ─── */
+  .review-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--cream); border-radius: var(--r-lg);
+    padding: 24px;
+    border: 1px solid var(--sand);
+  }
+  .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+  .review-text {
+    font-size: 14px; line-height: 1.6; color: var(--walnut);
+    font-style: italic; margin-bottom: 14px;
+  }
+  .review-author { font-size: 13px; font-weight: 500; color: var(--bark); }
+  .review-detail { font-size: 12px; color: var(--walnut); opacity: .55; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-card { max-width: 420px; }
+    .path-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .video-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .review-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .hero-stats { gap: 20px; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 540px) {
+    .hero { padding: 56px 20px 52px; }
+    .section { padding: 60px 20px; }
+    .step { grid-template-columns: 48px 1fr; gap: 20px; }
+    .trust-items { gap: 24px; }
+  }
+
+  /* ─── ENTRANCE ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge, .hero h1, .hero-sub, .hero-stats, .hero-actions {
+    opacity: 0; animation: fadeUp .6s forwards;
+  }
+  .hero-badge   { animation-delay: .05s; }
+  .hero h1      { animation-delay: .15s; }
+  .hero-sub     { animation-delay: .25s; }
+  .hero-stats   { animation-delay: .35s; }
+  .hero-actions { animation-delay: .45s; }
+  .hero-card    { opacity: 0; animation: fadeUp .7s .2s forwards; }
+</style>
+</head>
+<body>
+
+<!-- PSI REAL HEADER -->
+<style>
+/* ─── PSI HEADER SCOPED STYLES ─── */
+.psi-header {
+  background: #fff;
+  border-bottom: 1px solid #e0d9ce;
+  font-family: 'DM Sans', sans-serif;
+}
+.psi-topbar {
+  background: #3d2b1a;
+  color: #e8d5b7;
+  font-size: 12px;
+  padding: 7px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.psi-topbar a { color: #c8956c; text-decoration: none; }
+.psi-topbar a:hover { color: #e8d5b7; }
+.psi-topbar-left { display: flex; align-items: center; gap: 6px; }
+.psi-topbar-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.psi-masthead {
+  max-width: 1200px; margin: 0 auto;
+  padding: 12px 24px;
+  display: flex; align-items: center; gap: 20px;
+}
+.psi-logo { flex-shrink: 0; }
+.psi-logo img { height: 36px; width: auto; display: block; }
+.psi-search-form {
+  flex: 1; max-width: 520px;
+  display: flex; align-items: center;
+  background: #f7f1e8; border: 1px solid #c8956c;
+  border-radius: 6px; overflow: hidden;
+}
+.psi-search-form input {
+  flex: 1; padding: 8px 14px;
+  border: none; background: transparent;
+  font-size: 13px; color: #3d2b1a; outline: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.psi-search-form button {
+  padding: 8px 16px; background: #a0522d;
+  border: none; color: #fff; cursor: pointer;
+  font-size: 13px; font-family: 'DM Sans', sans-serif;
+  transition: background .15s;
+}
+.psi-search-form button:hover { background: #3d2b1a; }
+.psi-masthead-right {
+  display: flex; align-items: center; gap: 20px;
+  flex-shrink: 0; font-size: 13px;
+}
+.psi-masthead-right a {
+  color: #3d2b1a; text-decoration: none;
+  display: flex; align-items: center; gap: 5px;
+  font-weight: 500;
+}
+.psi-masthead-right a:hover { color: #a0522d; }
+.psi-cart-count {
+  background: #a0522d; color: #fff;
+  font-size: 10px; border-radius: 10px;
+  padding: 1px 5px; font-weight: 600;
+}
+
+/* Main nav */
+.psi-nav {
+  background: #fff;
+  border-top: 1px solid #e8d5b7;
+  border-bottom: 2px solid #c8956c;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 8px rgba(61,43,26,.08);
+}
+.psi-nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 24px;
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.psi-nav-inner::-webkit-scrollbar { display: none; }
+.psi-nav-item { position: relative; flex-shrink: 0; }
+.psi-nav-link {
+  display: block; padding: 13px 15px;
+  font-size: 13px; font-weight: 500;
+  color: #3d2b1a; text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.psi-nav-link:hover { color: #a0522d; border-bottom-color: #a0522d; }
+.psi-nav-link.active { color: #a0522d; border-bottom-color: #a0522d; }
+.psi-nav-item:hover .psi-dropdown { display: block; }
+.psi-dropdown {
+  display: none;
+  position: absolute; top: 100%; left: 0;
+  background: #fff; border: 1px solid #e8d5b7;
+  border-top: 2px solid #a0522d;
+  min-width: 200px;
+  box-shadow: 0 8px 24px rgba(61,43,26,.12);
+  border-radius: 0 0 8px 8px;
+  z-index: 200;
+}
+.psi-dropdown a {
+  display: block; padding: 9px 16px;
+  font-size: 13px; color: #3d2b1a;
+  text-decoration: none; border-bottom: 1px solid #f0e8dc;
+}
+.psi-dropdown a:last-child { border-bottom: none; }
+.psi-dropdown a:hover { background: #f7f1e8; color: #a0522d; }
+.psi-nav-cta {
+  margin-left: auto; flex-shrink: 0;
+  background: #2d4a2d; color: #fff !important;
+  padding: 7px 16px; border-radius: 6px;
+  font-size: 13px; font-weight: 500;
+  text-decoration: none;
+  transition: background .15s;
+  border-bottom: none !important;
+}
+.psi-nav-cta:hover { background: #3d2b1a !important; color: #fff !important; }
+</style>
+
+<div class="psi-header">
+  <!-- Utility bar -->
+  <div class="psi-topbar">
+    <div class="psi-topbar-left">
+      Need Help? <a href="tel:1-800-377-7297">1-800-377-7297</a> ☎
+    </div>
+    <div class="psi-topbar-links">
+      <a href="#">Live Chat</a>
+      <a href="https://www.pennstateind.com/store/CATALOG_REQUEST.html">Free Catalog</a>
+      <a href="https://www.pennstateind.com/store/LIBRARY.html">Product Instructions</a>
+      <a href="https://interactivecatalog.pennstateind.com/view/penn-state-industries/penn-state-industries">Interactive Catalog</a>
+      <a href="https://www.pennstateind.com/store/pen-design-studio.html">Pen Design Studio</a>
+      <a href="https://www.pennstateind.com/store/my_rewards.html">Rewards</a>
+    </div>
+  </div>
+  <!-- Masthead: logo + search + account -->
+  <div class="psi-masthead">
+    <a href="https://www.pennstateind.com/" class="psi-logo">
+      <img src="https://www.pennstateind.com/mm5/graphics/00000001/1/Site-logo.png" alt="Penn State Industries">
+    </a>
+    <form class="psi-search-form" method="post" action="https://www.pennstateind.com/store/SRCH.html">
+      <input type="search" name="Search" placeholder="Search by Keyword or Item #…" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+    <div class="psi-masthead-right">
+      <a href="https://www.pennstateind.com/store/LOGN.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        My Account
+      </a>
+      <a href="https://www.pennstateind.com/store/view-cart.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        Cart <span class="psi-cart-count">0</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- PSI MAIN NAV -->
+<nav class="psi-nav">
+  <div class="psi-nav-inner">
+    <div class="psi-nav-item">
+      <a class="psi-nav-link" href="https://www.pennstateind.com/store/pen-kits.html">Pen Kits ▾</a>
+      <div class="psi-dropdown">
+        <a href="https://www.pennstateind.com/store/bolt-action-pen-kits.html">Bolt Action Pen Kits</a>
+        <a href="https://www.pennstateind.com/store/slimline-pen-kits.html">Slimline Pen Kits</a>
+        <a href="https://www.pennstateind.com/store/pen-kit-starter-packages.html">Starter Pen Kit Packages</a>
+        <a href="https://www.pennstateind.com/store/pen-kit-bundles-starter-packs.html">Bundles &amp; Variety Packs</a>
+        <a href="https://www.pennstateind.com/store/majestic-pen-kits.html">Majestic Pen Kits</a>
+        <a href="https://www.pennstateind.com/store/gatsby-pen-kits.html">Gatsby Pen Kits</a>
+        <a href="https://www.pennstateind.com/store/pen-kits.html"><strong>Shop All Pen Kits →</strong></a>
+      </div>
+    </div>
+    <div class="psi-nav-item">
+      <a class="psi-nav-link" href="https://www.pennstateind.com/store/turning-project-kits.html">Project Kits ▾</a>
+      <div class="psi-dropdown">
+        <a href="https://www.pennstateind.com/store/bottle-stopper-kits.html">Bottle Stopper Kits</a>
+        <a href="https://www.pennstateind.com/store/peppermill-kits.html">Peppermill Kits</a>
+        <a href="https://www.pennstateind.com/store/shaving-kits.html">Shaving Kits</a>
+        <a href="https://www.pennstateind.com/store/bottle-opener-kits.html">Bottle Opener Kits</a>
+        <a href="https://www.pennstateind.com/store/turning-project-kits.html"><strong>Shop All Project Kits →</strong></a>
+      </div>
+    </div>
+    <div class="psi-nav-item">
+      <a class="psi-nav-link" href="https://www.pennstateind.com/store/pen-turning-supplies.html">Pen Turning Supplies ▾</a>
+      <div class="psi-dropdown">
+        <a href="https://www.pennstateind.com/store/pen-mandrels.html">Mandrels</a>
+        <a href="https://www.pennstateind.com/store/finishing.html">Finishing</a>
+        <a href="https://www.pennstateind.com/store/barrel-trimming-system.html">Barrel Trimming System</a>
+        <a href="https://www.pennstateind.com/store/pen-assembly-disassembly.html">Assembly and Disassembly</a>
+        <a href="https://www.pennstateind.com/store/pen-turning-supplies.html"><strong>Shop All Supplies →</strong></a>
+      </div>
+    </div>
+    <div class="psi-nav-item">
+      <a class="psi-nav-link" href="https://www.pennstateind.com/store/pen-turning-blanks.html">Blanks ▾</a>
+      <div class="psi-dropdown">
+        <a href="https://www.pennstateind.com/store/pen-blanks.html">Pen Blanks</a>
+        <a href="https://www.pennstateind.com/store/bowl-blanks.html">Bowl Blanks</a>
+        <a href="https://www.pennstateind.com/store/pen-inlay-kits.html">Pen Inlay Kits</a>
+        <a href="https://www.pennstateind.com/store/pen-turning-blanks.html"><strong>Shop All Blanks →</strong></a>
+      </div>
+    </div>
+    <div class="psi-nav-item">
+      <a class="psi-nav-link" href="https://www.pennstateind.com/store/mini-lathes-lathe-duplicators.html">Mini Lathes ▾</a>
+      <div class="psi-dropdown">
+        <a href="https://www.pennstateind.com/store/mini-lathes.html">Midi Lathes</a>
+        <a href="https://www.pennstateind.com/store/mini-lathes.html?Per_Page=48&Sort_By=disp_order&specType=Starter%20Set">Starter Sets</a>
+        <a href="https://www.pennstateind.com/store/mini-lathes.html"><strong>Shop All Lathes →</strong></a>
+      </div>
+    </div>
+    <div class="psi-nav-item">
+      <a class="psi-nav-link" href="https://www.pennstateind.com/store/lathe-accessories.html">Lathe Accessories ▾</a>
+      <div class="psi-dropdown">
+        <a href="https://www.pennstateind.com/store/woodturning-tools.html">Woodturning Tools</a>
+        <a href="https://www.pennstateind.com/store/lathe-chucks.html">Chucks</a>
+        <a href="https://www.pennstateind.com/store/lathe-chisel-sets.html">Lathe Chisel Sets</a>
+        <a href="https://www.pennstateind.com/store/lathe-accessories.html"><strong>Shop All Accessories →</strong></a>
+      </div>
+    </div>
+    <div class="psi-nav-item"><a class="psi-nav-link" href="https://www.pennstateind.com/mm5/merchant.mvc?Screen=BEST">Best Sellers</a></div>
+    <div class="psi-nav-item"><a class="psi-nav-link" href="https://www.pennstateind.com/store/specials.html">Specials</a></div>
+    <div class="psi-nav-item"><a class="psi-nav-link active" href="https://www.pennstateind.com/store/newcomer-to-hobby.html">Beginners Guide</a></div>
+    <div class="psi-nav-item"><a class="psi-nav-link" href="https://www.pennstateind.com/store/new.html">New Arrivals</a></div>
+    <a href="#what-do-i-need" class="psi-nav-cta">What do I need? →</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     EDITORIAL INTRO BAND
+══════════════════════════════════════════ -->
+<div class="intro-band">
+  <div class="intro-band-inner">
+    <div class="intro-band-text">
+      <span class="intro-band-label">New to pen turning?</span>
+      <span class="intro-band-copy">Learn the craft before you spend a penny — free guides, step-by-step videos and honest advice below.</span>
+    </div>
+    <div class="intro-band-links">
+      <a href="#how-it-works" class="intro-link">
+        <span class="intro-link-icon">📖</span>
+        <span>How it works</span>
+      </a>
+      <a href="#what-do-i-need" class="intro-link">
+        <span class="intro-link-icon">🛒</span>
+        <span>What do I need?</span>
+      </a>
+      <a href="#videos" class="intro-link">
+        <span class="intro-link-icon">▶</span>
+        <span>Watch videos</span>
+      </a>
+      <a href="#cost" class="intro-link">
+        <span class="intro-link-icon">💰</span>
+        <span>What does it cost?</span>
+      </a>
+      <a href="#faq" class="intro-link">
+        <span class="intro-link-icon">💬</span>
+        <span>Common questions</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<style>
+  .hero-inner-split {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 480px;
+    gap: 64px; align-items: center;
+  }
+  .hero-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 160px 180px;
+    gap: 10px;
+  }
+  .hero-mosaic-img {
+    border-radius: 10px; overflow: hidden;
+    background: var(--walnut);
+    position: relative;
+  }
+  .hero-mosaic-img img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .4s;
+  }
+  .hero-mosaic-img:hover img { transform: scale(1.04); }
+  .hero-mosaic-img.span-col { grid-column: 1 / -1; }
+  .hero-mosaic-img.tall { grid-row: span 2; }
+  .mosaic-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(26,18,8,.7));
+    padding: 20px 12px 10px;
+    font-size: 11px; font-weight: 500; color: rgba(255,255,255,.85);
+    letter-spacing: .04em;
+  }
+  @media (max-width: 900px) {
+    .hero-inner-split { grid-template-columns: 1fr; gap: 40px; }
+    .hero-mosaic { grid-template-rows: 160px 130px; grid-template-columns: 1fr 1fr 1fr; }
+    .hero-mosaic-img.tall { grid-row: span 1; }
+    .hero-mosaic-img.span-col { grid-column: span 1; }
+  }
+</style>
+<section class="hero">
+  <div class="hero-inner-split">
+    <div class="hero-text">
+      <div class="hero-badge">Beginners Guide</div>
+      <h1>Make something<br><em>people actually<br>keep.</em></h1>
+      <p class="hero-sub">A handmade pen is one of the few gifts that gets used every day and tells the story of who made it. Most beginners finish their first one in an afternoon.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>~2hrs</strong>
+          <span>First pen, start to finish</span>
+        </div>
+        <div class="hero-stat">
+          <strong>Kept forever</strong>
+          <span>Unlike almost any other gift</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#what-to-make" class="btn-primary">What would I make?</a>
+        <a href="#how-it-works" class="btn-ghost">How does it work? ↓</a>
+      </div>
+    </div>
+    <div class="hero-mosaic">
+      <!-- tall left image -->
+      <div class="hero-mosaic-img tall">
+        <img src="https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp" alt="Bolt action pens" onerror="this.parentElement.style.background='#6b4226'">
+        <div class="mosaic-label">Bolt Action Pen</div>
+      </div>
+      <!-- top right -->
+      <div class="hero-mosaic-img">
+        <img src="https://www.pennstateind.com/mm5/graphics/00000001/PENPALSS_384x384_2.jpg" alt="PenPal starter kit" onerror="this.parentElement.style.background='#a0522d'">
+        <div class="mosaic-label">Starter Kit</div>
+      </div>
+      <!-- middle right -->
+      <div class="hero-mosaic-img">
+        <img src="https://www.pennstateind.com/mm5/graphics/00000001/BSKIT_384x384.jpg" alt="Bottle stopper" onerror="this.parentElement.style.background='#2d4a2d'">
+        <div class="mosaic-label">Bottle Stopper</div>
+      </div>
+      <!-- bottom full width -->
+      <div class="hero-mosaic-img span-col">
+        <img src="https://www.pennstateind.com/mm5/graphics/00000001/7/PKMS2SET_384x384_2.jpg" alt="Pen mandrel and tools" onerror="this.parentElement.style.background='#3d2b1a'">
+        <div class="mosaic-label">From your first afternoon</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ══════════════════════════════════════════
+     FIRST TIMERS GALLERY
+══════════════════════════════════════════ -->
+<section class="section section-alt" id="first-gifts">
+<style>
+.gallery-strip {
+  display: flex; gap: 20px;
+  overflow-x: auto; padding: 4px 0 12px;
+  scrollbar-width: thin; scrollbar-color: var(--sand) transparent;
+  max-width: 1060px; margin: 0 auto;
+}
+.gallery-card {
+  flex-shrink: 0; width: 280px;
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--sand);
+}
+.gallery-avatar-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 16px 0;
+}
+.gallery-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  overflow: hidden; flex-shrink: 0; background: var(--sand);
+}
+.gallery-avatar svg { width: 100%; height: 100%; }
+.gallery-author { font-size: 13px; }
+.gallery-author strong { color: var(--bark); display: block; font-weight: 500; }
+.gallery-author span { color: var(--walnut); opacity: .6; font-size: 12px; }
+.gallery-stars { color: var(--gold); font-size: 12px; padding: 10px 16px 0; }
+.gallery-quote {
+  font-size: 13px; line-height: 1.6; color: var(--walnut);
+  font-style: italic; padding: 6px 16px 16px;
+}
+.gallery-tag {
+  display: inline-block; margin: 0 16px 14px;
+  background: #edf7ed; color: var(--pine);
+  border: 1px solid #c3e6c3;
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 20px;
+}
+</style>
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Real first-timers</div>
+      <h2>Gifts made by people<br>who'd never done this before.</h2>
+      <p>Their first pen. Their first project. Given to someone who kept it.</p>
+    </div>
+
+    <div class="gallery-strip">
+
+      <div class="gallery-card">
+        <div class="gallery-avatar-row">
+          <div class="gallery-avatar">
+            <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <rect width="44" height="44" fill="#c8956c"/>
+              <circle cx="22" cy="16" r="8" fill="#f7f1e8"/>
+              <ellipse cx="22" cy="38" rx="13" ry="10" fill="#f7f1e8"/>
+            </svg>
+          </div>
+          <div class="gallery-author">
+            <strong>James T.</strong>
+            <span>Retired engineer, Ohio</span>
+          </div>
+        </div>
+        <div class="gallery-stars">★★★★★</div>
+        <p class="gallery-quote">"Made this for my daughter's graduation. First pen I'd ever turned — took me three hours including all my mistakes. She uses it every day at work."</p>
+        <span class="gallery-tag">🎓 Graduation gift</span>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-avatar-row">
+          <div class="gallery-avatar">
+            <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <rect width="44" height="44" fill="#7aad6a"/>
+              <circle cx="22" cy="16" r="8" fill="#f7f1e8"/>
+              <ellipse cx="22" cy="38" rx="13" ry="10" fill="#f7f1e8"/>
+            </svg>
+          </div>
+          <div class="gallery-author">
+            <strong>Linda M.</strong>
+            <span>Teacher, Vermont</span>
+          </div>
+        </div>
+        <div class="gallery-stars">★★★★★</div>
+        <p class="gallery-quote">"My husband bought me the kit for Christmas. I had no idea what I was doing. Made a pen for my mum from cherry wood. She told everyone who visited. I've made 18 since."</p>
+        <span class="gallery-tag">🎄 Christmas gift</span>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-avatar-row">
+          <div class="gallery-avatar">
+            <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <rect width="44" height="44" fill="#6b4226"/>
+              <circle cx="22" cy="16" r="8" fill="#f7f1e8"/>
+              <ellipse cx="22" cy="38" rx="13" ry="10" fill="#f7f1e8"/>
+            </svg>
+          </div>
+          <div class="gallery-author">
+            <strong>Ray D.</strong>
+            <span>Contractor, Tennessee</span>
+          </div>
+        </div>
+        <div class="gallery-stars">★★★★★</div>
+        <p class="gallery-quote">"I made a bottle stopper from reclaimed oak for my dad's birthday — wood from our old back porch we tore down. He couldn't believe I made it. Neither could I honestly."</p>
+        <span class="gallery-tag">🎂 Birthday gift</span>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-avatar-row">
+          <div class="gallery-avatar">
+            <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <rect width="44" height="44" fill="#a0522d"/>
+              <circle cx="22" cy="16" r="8" fill="#f7f1e8"/>
+              <ellipse cx="22" cy="38" rx="13" ry="10" fill="#f7f1e8"/>
+            </svg>
+          </div>
+          <div class="gallery-author">
+            <strong>Carol S.</strong>
+            <span>Nurse, Minnesota</span>
+          </div>
+        </div>
+        <div class="gallery-stars">★★★★★</div>
+        <p class="gallery-quote">"My son showed me this page and ordered me the PenPal kit. I was skeptical. Made my first pen in an afternoon, gave it to my sister. She cried. I cried. Now I make them for everyone."</p>
+        <span class="gallery-tag">🌸 Gift for sister</span>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-avatar-row">
+          <div class="gallery-avatar">
+            <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <rect width="44" height="44" fill="#2d4a2d"/>
+              <circle cx="22" cy="16" r="8" fill="#f7f1e8"/>
+              <ellipse cx="22" cy="38" rx="13" ry="10" fill="#f7f1e8"/>
+            </svg>
+          </div>
+          <div class="gallery-author">
+            <strong>Peter H.</strong>
+            <span>Software developer, Oregon</span>
+          </div>
+        </div>
+        <div class="gallery-stars">★★★★★</div>
+        <p class="gallery-quote">"Complete beginner. Followed the videos, messed up two blanks, nailed the third. Gave a walnut pen to my wife for our anniversary. She said it was the best gift I'd ever given her. That's the bar now."</p>
+        <span class="gallery-tag">💍 Anniversary gift</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     WHAT COULD YOU MAKE?
+══════════════════════════════════════════ -->
+<section class="section" id="what-to-make">
+<style>
+.make-row {
+  display: flex; gap: 10px; flex-wrap: nowrap;
+  justify-content: center;
+  max-width: 1060px; margin: 0 auto;
+  overflow-x: auto; padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.make-row::-webkit-scrollbar { display: none; }
+.make-card {
+  flex-shrink: 0;
+  border: 2px solid var(--sand);
+  border-radius: var(--r-lg);
+  padding: 16px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .1s, box-shadow .15s;
+  background: var(--white);
+  user-select: none;
+  min-width: 130px;
+}
+.make-card:hover { border-color: var(--cedar); background: #fdf7f0; transform: translateY(-2px); }
+.make-card.selected {
+  border-color: var(--cedar); background: #fdf7f0;
+  box-shadow: 0 4px 16px rgba(160,82,45,.15);
+}
+.make-card-icon { font-size: 28px; display: block; margin-bottom: 7px; }
+.make-card-name { font-size: 13px; font-weight: 500; color: var(--bark); display: block; margin-bottom: 3px; }
+.make-card-time { font-size: 11px; color: var(--walnut); opacity: .6; display: block; }
+.make-card-check {
+  display: none; width: 16px; height: 16px;
+  background: var(--cedar); border-radius: 50%;
+  color: #fff; font-size: 9px;
+  align-items: center; justify-content: center;
+  margin: 6px auto 0;
+}
+.make-card.selected .make-card-check { display: flex; }
+</style>
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Your first project</div>
+      <h2>What would you like to make?</h2>
+      <p>Pick one or more — we'll update the materials list to match.</p>
+    </div>
+    <div class="make-row">
+      <div class="make-card selected" data-project="pen" onclick="selectProject(this)">
+        <span class="make-card-icon">✒️</span>
+        <span class="make-card-name">Pen</span>
+        <span class="make-card-time">~2 hrs · Most popular</span>
+        <span class="make-card-check">✓</span>
+      </div>
+      <div class="make-card" data-project="bottle-stopper" onclick="selectProject(this)">
+        <span class="make-card-icon">🍾</span>
+        <span class="make-card-name">Bottle Stopper</span>
+        <span class="make-card-time">~1.5 hrs · Great gift</span>
+        <span class="make-card-check">✓</span>
+      </div>
+      <div class="make-card" data-project="seam-ripper" onclick="selectProject(this)">
+        <span class="make-card-icon">🧵</span>
+        <span class="make-card-name">Seam Ripper</span>
+        <span class="make-card-time">~1 hr · Sewers love it</span>
+        <span class="make-card-check">✓</span>
+      </div>
+      <div class="make-card" data-project="bottle-opener" onclick="selectProject(this)">
+        <span class="make-card-icon">🍺</span>
+        <span class="make-card-name">Bottle Opener</span>
+        <span class="make-card-time">~1.5 hrs · Great for him</span>
+        <span class="make-card-check">✓</span>
+      </div>
+      <div class="make-card" data-project="keychain" onclick="selectProject(this)">
+        <span class="make-card-icon">🔑</span>
+        <span class="make-card-name">Keychain</span>
+        <span class="make-card-time">~45 min · Easy first</span>
+        <span class="make-card-check">✓</span>
+      </div>
+      <div class="make-card" data-project="crochet-hook" onclick="selectProject(this)">
+        <span class="make-card-icon">🪡</span>
+        <span class="make-card-name">Crochet Hook</span>
+        <span class="make-card-time">~1 hr · Crafters love it</span>
+        <span class="make-card-check">✓</span>
+      </div>
+    </div>
+    <div id="project-note" style="max-width:640px;margin:20px auto 0;text-align:center;font-size:14px;color:var(--walnut);opacity:.75;min-height:36px;transition:opacity .2s;"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════ -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">The process</div>
+      <h2>How a pen gets made</h2>
+      <p>Six steps. Your first one takes an afternoon. By the tenth, you'll have it down to an hour.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Choose your blank — it's where the story starts</h3>
+          <p>A "blank" is a small block of wood that becomes the body of your pen. Hardwoods like walnut and cherry are easiest for beginners. But here's what experienced turners know: the blank is what makes a pen truly meaningful. Wood from a fallen tree in your yard, a piece of reclaimed flooring, a branch from a grandparent's garden — the material carries the story. Your first pen doesn't need to be exotic, but keep that in mind as you grow.</p>
+          <div class="step-products">
+            <a href="https://www.pennstateind.com/store/pen-blanks.html" class="step-tag required">Wood pen blanks →</a>
+            <a href="https://www.pennstateind.com/store/pen-turning-blanks.html" class="step-tag">Acrylic &amp; exotic blanks</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Cut &amp; drill your blank</h3>
+          <p>Cut the blank to length and drill a precise hole through the centre to fit the brass tube from your pen kit. Accuracy here matters for the final fit — the PenPal lathe includes a drilling guide to make this foolproof.</p>
+          <div class="step-products">
+            <a href="https://www.pennstateind.com/store/CSCPENCHK.html" class="step-tag required">Pen blank drilling chuck →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Glue in the brass tube</h3>
+          <p>Lightly roughen the brass tube with sandpaper so the glue bites, then apply CA glue (super glue) and slide it into the drilled blank. Let it set for a few minutes. This tube is what the pen mechanism presses into during final assembly.</p>
+          <div class="step-products">
+            <a href="https://www.pennstateind.com/store/SRCH.html?Search=glue" class="step-tag required">CA glue →</a>
+            <a href="https://www.pennstateind.com/mm5/merchant.mvc?Screen=SRCH&Search=pen+tube+insertion+tool" class="step-tag">Tube insertion tool</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Square the ends &amp; mount on the lathe</h3>
+          <p>Use the barrel trimmer to square off both ends of the blank flush with the brass tube — this is what makes the metal parts fit cleanly. Then mount the blank on the lathe using the pen mandrel.</p>
+          <div class="step-products">
+            <a href="https://www.pennstateind.com/store/barrel-trimming-system.html" class="step-tag required">Barrel trimmer →</a>
+            <a href="https://www.pennstateind.com/store/pen-mandrels.html" class="step-tag required">Pen mandrel →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Turn &amp; sand the barrel</h3>
+          <p>This is the most satisfying part — and where most first-timers make their mistakes. You might go too deep, catch an edge, or sand through a thin section. That's completely normal. Every turner did the same. The blank is cheap; the lesson is valuable. Work the wood down to match the diameter of the bushings, then sand through grits (120 → 220 → 400 → 600) until it's glass-smooth.</p>
+          <div class="step-products">
+            <a href="https://www.pennstateind.com/store/woodturning-tools.html" class="step-tag required">Turning chisels →</a>
+            <a href="https://www.pennstateind.com/store/sanding-finishing.html" class="step-tag required">Sandpaper →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Finish &amp; assemble</h3>
+          <p>Apply your finish while the blank is still spinning on the lathe — CA finish gives a glassy look in minutes. Once dry, use the pen press to push the metal components in firmly and squarely. Done. That's your pen.</p>
+          <div class="step-products">
+            <a href="https://www.pennstateind.com/store/finishing.html" class="step-tag required">CA finish →</a>
+            <a href="https://www.pennstateind.com/store/PENPRESSXL.html" class="step-tag required">Pen press →</a>
+            <a href="https://www.pennstateind.com/store/pen-kits.html" class="step-tag required">Pen kits →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     WHAT DO I NEED — SHOPPING LIST
+══════════════════════════════════════════ -->
+<section class="section section-alt" id="what-do-i-need">
+<style>
+/* ─── SHOPPING LIST ─── */
+.checklist-intro {
+  max-width: 680px; margin: 0 auto 48px; text-align: center;
+}
+.checklist-intro p { font-size: 16px; color: var(--walnut); opacity: .8; }
+
+/* ── SECTION WRAPPER ── */
+.cl-section {
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  border-radius: var(--r-lg);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.cl-section.all-owned { opacity: .5; }
+
+.cl-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 24px 18px;
+  background: var(--cream);
+}
+.cl-icon { font-size: 20px; flex-shrink: 0; }
+.cl-title h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; color: var(--bark); margin: 0;
+}
+.cl-owned-count {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 12px; color: var(--moss); font-weight: 500;
+}
+
+/* ── ITEMS LIST ── */
+.cl-items {
+  padding: 0 16px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+/* ── INDIVIDUAL ITEM CARD ── */
+.cl-item {
+  display: grid;
+  grid-template-columns: 116px 1fr 280px;
+  align-items: stretch;
+  background: var(--white);
+  border: 1px solid #e4d9c8;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(61,43,26,.06);
+  transition: box-shadow .15s;
+}
+.cl-item:hover { box-shadow: 0 3px 12px rgba(61,43,26,.1); }
+.cl-item.item-owned {
+  background: #f6fbf6;
+  box-shadow: none;
+}
+.cl-item.item-owned .cl-item-name {
+  text-decoration: line-through; opacity: .4;
+}
+.cl-item.item-owned .cl-item-desc { opacity: .3; }
+.cl-item.item-owned .cl-item-product { opacity: .3; pointer-events: none; }
+
+/* ── LEFT: toggle buttons ── */
+.cl-item-btns {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: stretch;
+  gap: 7px; padding: 16px 12px 16px 16px;
+  border-right: 1px solid #e8ddd0;
+  background: var(--white);
+}
+.cl-ibtn {
+  padding: 7px 0;
+  border-radius: 24px;
+  border: 1.5px solid #d0c4b4;
+  background: transparent;
+  font-size: 12px; font-weight: 500;
+  cursor: pointer; transition: all .15s;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--walnut); text-align: center;
+  line-height: 1;
+}
+.cl-ibtn:hover { border-color: var(--cedar); color: var(--cedar); }
+.cl-ibtn.ibtn-need {
+  background: var(--bark); border-color: var(--bark); color: #fff;
+}
+.cl-ibtn.ibtn-have {
+  background: var(--pine); border-color: var(--pine); color: #fff;
+}
+
+/* ── MIDDLE: content ── */
+.cl-item-left {
+  padding: 18px 20px;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  min-width: 0;
+}
+.cl-item-top {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.cl-item-name {
+  font-size: 15px; font-weight: 500; color: var(--bark);
+  transition: opacity .2s;
+}
+.cl-item-desc {
+  font-size: 13px; color: var(--walnut); opacity: .6;
+  line-height: 1.5;
+  transition: opacity .2s;
+}
+
+/* ── BADGE ── */
+.cl-badge {
+  display: inline-block; flex-shrink: 0;
+  font-size: 10px; font-weight: 500;
+  padding: 3px 10px; border-radius: 12px;
+  white-space: nowrap; letter-spacing: .02em;
+}
+.cl-badge-must { background: #fdecea; color: #c0392b; border: 1px solid #f5c0bc; }
+.cl-badge-rec  { background: #fdf3e0; color: #9a6300; border: 1px solid #f0d89a; }
+.cl-badge-nice { background: #edf5fb; color: #1a5a80; border: 1px solid #b3d4ec; }
+
+/* ── RIGHT: product cell ── */
+.cl-item-product {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center; gap: 12px;
+  padding: 14px 16px;
+  border-left: 1px solid #e8ddd0;
+  background: var(--white);
+  text-decoration: none; color: inherit;
+  transition: background .15s;
+}
+.cl-item-product:hover { background: #fdf7f0; }
+.cl-item-product img {
+  width: 56px; height: 56px; border-radius: 8px;
+  object-fit: cover; background: var(--sand);
+  border: 1px solid var(--sand);
+}
+.cl-item-product-info {}
+.cl-item-product-name {
+  font-size: 12px; font-weight: 500; color: var(--bark);
+  line-height: 1.35; margin-bottom: 4px;
+}
+.cl-item-product-price {
+  font-size: 15px; font-weight: 600; color: var(--bark);
+}
+.cl-item-product-btn {
+  flex-shrink: 0;
+  background: var(--cedar); color: #fff;
+  border-radius: 6px; padding: 8px 14px;
+  font-size: 12px; font-weight: 500; white-space: nowrap;
+  transition: background .15s;
+}
+.cl-item-product:hover .cl-item-product-btn { background: var(--walnut); }
+
+@media (max-width: 900px) {
+  .cl-item { grid-template-columns: 100px 1fr; }
+  .cl-item-product { display: none; }
+}
+
+/* Section-level product strip — hidden, products are inline */
+.cl-products { display: none; }
+.cl-products-label { display: none; }
+.cl-product {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: var(--r);
+  padding: 10px 12px;
+  text-decoration: none; color: inherit;
+  transition: border-color .15s, box-shadow .15s;
+  flex: 1; min-width: 200px; max-width: 320px;
+}
+.cl-product:hover {
+  border-color: var(--cedar);
+  box-shadow: 0 4px 16px rgba(160,82,45,.1);
+}
+.cl-product-img {
+  width: 48px; height: 48px; border-radius: 6px;
+  object-fit: cover; flex-shrink: 0; background: var(--sand);
+}
+.cl-product-name { font-size: 12px; font-weight: 500; color: var(--bark); line-height: 1.3; margin-bottom: 3px; }
+.cl-product-price { font-size: 14px; font-weight: 600; color: var(--pine); }
+.cl-product-add {
+  margin-left: auto; flex-shrink: 0;
+  background: var(--cedar); color: #fff;
+  border: none; border-radius: 4px;
+  padding: 5px 10px; font-size: 11px; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  text-decoration: none; white-space: nowrap;
+  transition: background .15s;
+}
+.cl-product:hover .cl-product-add { background: var(--walnut); }
+</style>
+
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Your shopping list</div>
+      <h2>What do I need?</h2>
+    </div>
+    <div class="checklist-intro">
+      <p>Mark what you already own — those items will cross off and the section will dim. Focus only on what's missing.</p>
+    </div>
+
+    <!-- ── 1. MACHINERY & PREPARATION ── -->
+    <div class="cl-section" id="cl-machinery">
+      <div class="cl-header">
+        <span class="cl-icon">⚙️</span>
+        <div class="cl-title"><h3>Machinery &amp; Preparation</h3></div>
+        <span class="cl-owned-count" id="cl-machinery-count"></span>
+      </div>
+      <div class="cl-items">
+
+        <div class="cl-item" id="cli-lathe">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-lathe','cl-machinery')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-lathe','cl-machinery')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Mini / Midi Lathe</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">The primary machine for turning pen blanks. The PenPal is purpose-built for pens; a 10" midi is the next step up.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/PENPALSS.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PENPALSS_384x384_2.jpg" alt="PenPal Lathe Starter Set" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">PenPal Lathe Starter Set</div>
+              <div class="cl-item-product-price">$399.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-saw">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-saw','cl-machinery')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-saw','cl-machinery')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Cutting Saw</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Bandsaw, tablesaw or handsaw — for cutting blanks to rough length before drilling.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/pen-turning-supplies.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PENPAL_384x384_2.jpg" alt="PenPal Pen Making Lathe" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">PenPal Pen Making Lathe</div>
+              <div class="cl-item-product-price">$259.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-drill">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-drill','cl-machinery')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-drill','cl-machinery')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Drill Press</span>
+              <span class="cl-badge cl-badge-rec">Recommended</span>
+            </div>
+            <span class="cl-item-desc">To drill a centred hole through the blank for the brass tube. A handheld drill can work but accuracy suffers — a press is much better.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/CSCPENCHK.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/CSCPENCHK_384x384.jpg" alt="Pen Blank Drilling Chuck" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Pen Blank Drilling Chuck</div>
+              <div class="cl-item-product-price">$29.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-trimmer">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-trimmer','cl-machinery')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-trimmer','cl-machinery')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Barrel Trimmer</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Squares the ends of the drilled blank perfectly flush with the brass tube. Without this, the metal parts won't fit cleanly.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/PKTRIMKIT.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/6/PKTRIMKIT_384x384.jpg" alt="7pc Barrel Trimming System" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">7pc Barrel Trimming System</div>
+              <div class="cl-item-product-price">$39.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="cl-products">
+        <div class="cl-products-label">Shop for this section</div>
+        <a href="https://www.pennstateind.com/store/PENPALSS.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PENPALSS_384x384_2.jpg" alt="PenPal Starter Set" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">PenPal Lathe Starter Set</div><div class="cl-product-price">$399.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/store/PENPAL.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PENPAL_384x384_2.jpg" alt="PenPal Lathe" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">PenPal Pen Making Lathe</div><div class="cl-product-price">$259.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/store/PKTRIMKIT.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/6/PKTRIMKIT_384x384.jpg" alt="Barrel Trimmer" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">7pc Barrel Trimming System</div><div class="cl-product-price">$39.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 2. ADHESIVES & HANDLING ── -->
+    <div class="cl-section" id="cl-adhesives">
+      <div class="cl-header">
+        <span class="cl-icon">🧴</span>
+        <div class="cl-title"><h3>Adhesives &amp; Handling</h3></div>
+        <span class="cl-owned-count" id="cl-adhesives-count"></span>
+      </div>
+      <div class="cl-items">
+
+        <div class="cl-item" id="cli-caglue">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-caglue','cl-adhesives')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-caglue','cl-adhesives')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">CA Glue (Cyanoacrylate)</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Thick "super glue" for bonding the brass tube inside the blank. Also used as a high-gloss finish. Get both thin and thick viscosities.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/SRCH.html?Search=ca+glue&Per_Page=48&Sort_By=bestsellers" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PKCAFIN.jpg" alt="CA Glue & Finish Set" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">CA Glue & Finish Set</div>
+              <div class="cl-item-product-price">~$12–$18</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-insertion">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-insertion','cl-adhesives')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-insertion','cl-adhesives')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Tube Insertion Tool</span>
+              <span class="cl-badge cl-badge-rec">Recommended</span>
+            </div>
+            <span class="cl-item-desc">Seats the brass tube evenly into the blank without smearing glue everywhere. You can use a dowel instead, but this makes it cleaner and repeatable.</span>
+          </div>
+          <a href="https://www.pennstateind.com/mm5/merchant.mvc?Screen=SRCH&Search=pen+tube+insertion+tool" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PKTINT.jpg" alt="Pen Tube Insertion Tool" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Pen Tube Insertion Tool</div>
+              <div class="cl-item-product-price">~$10</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="cl-products">
+        <div class="cl-products-label">Shop for this section</div>
+        <a href="https://www.pennstateind.com/store/SRCH.html?Search=ca+glue&Per_Page=48&Sort_By=bestsellers" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PKCAFIN.jpg" alt="CA Glue" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">CA Glue &amp; Finish Set</div><div class="cl-product-price">~$12–$18</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/mm5/merchant.mvc?Screen=SRCH&Search=pen+tube+insertion+tool" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PKTINT.jpg" alt="Tube Insertion Tool" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">Pen Tube Insertion Tool</div><div class="cl-product-price">~$10</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 3. TURNING & SHAPING ── -->
+    <div class="cl-section" id="cl-turning">
+      <div class="cl-header">
+        <span class="cl-icon">🪚</span>
+        <div class="cl-title"><h3>Turning &amp; Shaping</h3></div>
+        <span class="cl-owned-count" id="cl-turning-count"></span>
+      </div>
+      <div class="cl-items">
+
+        <div class="cl-item" id="cli-mandrel">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-mandrel','cl-turning')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-mandrel','cl-turning')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Pen Mandrel</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Holds the drilled blank on the lathe between bushings that set the finished diameter. Pen-specific — standard lathe chucks won't do this job.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/PKMS2SET.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PKMS2SET_384x384_2.jpg" alt="#2 MT Pen Mandrel Package" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">#2 MT Pen Mandrel Package</div>
+              <div class="cl-item-product-price">$39.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-gouge">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-gouge','cl-turning')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-gouge','cl-turning')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Roughing Gouge</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Rounds off the square blank quickly and safely. The first tool you reach for every time. HSS (high-speed steel) holds its edge much longer than standard steel.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/woodturning-tools.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/LCPM3.jpg" alt="HSS Pen Turning Chisel Set" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">HSS Pen Turning Chisel Set</div>
+              <div class="cl-item-product-price">$39.95–$79.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-skew">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-skew','cl-turning')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-skew','cl-turning')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Skew Chisel</span>
+              <span class="cl-badge cl-badge-rec">Recommended</span>
+            </div>
+            <span class="cl-item-desc">For final shaping and producing a clean, smooth surface before sanding. Has a learning curve — beginners sometimes use a spindle gouge first instead.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/lathe-chisel-sets.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/LCPM3.jpg" alt="Lathe Chisel Sets" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Lathe Chisel Sets</div>
+              <div class="cl-item-product-price">From $29.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-carbide">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-carbide','cl-turning')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-carbide','cl-turning')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Carbide Turning Tool</span>
+              <span class="cl-badge cl-badge-nice">Nice to have</span>
+            </div>
+            <span class="cl-item-desc">Much easier for beginners than traditional tools — no sharpening required, very forgiving. A great alternative if the skew chisel feels intimidating at first.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/carbide-magic-turning-tools.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/CRBDMGC.jpg" alt="Carbide Magic Turning Tools" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Carbide Magic Turning Tools</div>
+              <div class="cl-item-product-price">From $49.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="cl-products">
+        <div class="cl-products-label">Shop for this section</div>
+        <a href="https://www.pennstateind.com/store/PKMS2SET.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PKMS2SET_384x384_2.jpg" alt="Pen Mandrel" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">#2 MT Pen Mandrel Saver Package</div><div class="cl-product-price">$39.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/store/woodturning-tools.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/LCPM3.jpg" alt="Chisel Set" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">HSS Pen Turning Chisel Set</div><div class="cl-product-price">$39.95–$79.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/store/carbide-magic-turning-tools.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/CRBDMGC.jpg" alt="Carbide Tools" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">Carbide Magic Turning Tools</div><div class="cl-product-price">From $49.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 4. SANDING & FINISHING ── -->
+    <div class="cl-section" id="cl-sanding">
+      <div class="cl-header">
+        <span class="cl-icon">✨</span>
+        <div class="cl-title"><h3>Sanding &amp; Finishing</h3></div>
+        <span class="cl-owned-count" id="cl-sanding-count"></span>
+      </div>
+      <div class="cl-items">
+
+        <div class="cl-item" id="cli-sandpaper">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-sandpaper','cl-sanding')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-sandpaper','cl-sanding')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Assorted Sandpaper</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Work through grits 120 → 220 → 400 → 600 while the blank spins on the lathe. Each grit removes the scratches left by the previous one.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/PKSPSET5.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/6/PKSPSET5_384x384.jpg" alt="Abrasive Rolls — 5 Grits" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Abrasive Rolls — 5 Grits</div>
+              <div class="cl-item-product-price">$16.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-finish">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-finish','cl-sanding')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-finish','cl-sanding')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">CA Finish</span>
+              <span class="cl-badge cl-badge-rec">Recommended</span>
+            </div>
+            <span class="cl-item-desc">Applied while the blank spins — builds a glassy, durable finish in minutes. The most popular choice for beginners. Can also double as your tube adhesive.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/PKCAFINSET.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PKCAFINSET.jpg" alt="CA Pen Finish Set" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">CA Pen Finish Set</div>
+              <div class="cl-item-product-price">$19.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-polish">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-polish','cl-sanding')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-polish','cl-sanding')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Friction Polish / Wax</span>
+              <span class="cl-badge cl-badge-nice">Nice to have</span>
+            </div>
+            <span class="cl-item-desc">A faster, more forgiving alternative to CA finish — gives a warm, natural sheen rather than a high-gloss look. Good for a second pen where you want a different feel.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/finishing.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PKCAFIN.jpg" alt="Friction Polish & Wax" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Friction Polish & Wax</div>
+              <div class="cl-item-product-price">From $8.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="cl-products">
+        <div class="cl-products-label">Shop for this section</div>
+        <a href="https://www.pennstateind.com/store/PKSPSET5.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/6/PKSPSET5_384x384.jpg" alt="Sandpaper" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">Abrasive Rolls — 5 Grits</div><div class="cl-product-price">$16.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/store/PKCAFINSET.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PKCAFINSET.jpg" alt="CA Finish Set" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">CA Pen Finish Set</div><div class="cl-product-price">$19.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 5. ASSEMBLY ── -->
+    <div class="cl-section" id="cl-assembly">
+      <div class="cl-header">
+        <span class="cl-icon">🔩</span>
+        <div class="cl-title"><h3>Assembly</h3></div>
+        <span class="cl-owned-count" id="cl-assembly-count"></span>
+      </div>
+      <div class="cl-items">
+
+        <div class="cl-item" id="cli-penpress">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-penpress','cl-assembly')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-penpress','cl-assembly')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Pen Press</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Presses the metal components squarely and evenly into the finished barrel. Trying to use a clamp or vice instead usually damages the barrel or parts.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/PENPRESSXL.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/7/PENPRESSXL_384x384.webp" alt="Assembly/Disassembly Pen Press XL" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Assembly/Disassembly Pen Press XL</div>
+              <div class="cl-item-product-price">$74.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="cl-products">
+        <div class="cl-products-label">Shop for this section</div>
+        <a href="https://www.pennstateind.com/store/PENPRESSXL.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/7/PENPRESSXL_384x384.webp" alt="Pen Press" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">Assembly/Disassembly Pen Press XL</div><div class="cl-product-price">$74.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 6. CORE MATERIALS ── -->
+    <div class="cl-section" id="cl-materials" style="border-color: var(--cedar);">
+      <div class="cl-header" style="background: #fdf7f0;">
+        <span class="cl-icon">🪵</span>
+        <div class="cl-title"><h3>Core Materials</h3></div>
+        <span style="font-size:12px;color:var(--cedar);font-weight:500;margin-left:auto;">Consumables — needed per pen</span>
+      </div>
+      <div style="padding: 10px 20px 0; font-size: 13px; color: var(--cedar); opacity: .8;">
+        ↓ You'll buy these repeatedly — one kit and one blank per pen you make.
+      </div>
+      <div class="cl-items" id="cl-materials-items">
+
+        <div class="cl-item" id="cli-penkit">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-penkit','cl-materials')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-penkit','cl-materials')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Pen Kit</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Includes all metal hardware and internal brass tubes — one kit per pen. Bolt Action is the most popular beginner choice.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/PKCPBAPAK.html" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp" alt="3 Bolt Action Pen Kit Starter Set" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">3 Bolt Action Pen Kit Starter Set</div>
+              <div class="cl-item-product-price">$39.95</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+        <div class="cl-item" id="cli-blank">
+          <div class="cl-item-btns">
+            <button class="cl-ibtn ibtn-need" onclick="itemToggle('cli-blank','cl-materials')">Need it</button>
+            <button class="cl-ibtn" onclick="itemToggle('cli-blank','cl-materials')">Have it ✓</button>
+          </div>
+          <div class="cl-item-left">
+            <div class="cl-item-top">
+              <span class="cl-item-name">Pen Blanks</span>
+              <span class="cl-badge cl-badge-must">Must have</span>
+            </div>
+            <span class="cl-item-desc">Raw wood or acrylic blocks (standard ¾" × 5") — one per pen. Start with domestic hardwoods like walnut or cherry; they're easiest to turn.</span>
+          </div>
+          <a href="https://www.pennstateind.com/store/pen-blanks.html?Per_Page=48&Sort_By=bestsellers" class="cl-item-product" target="_blank">
+            <img src="https://www.pennstateind.com/mm5/graphics/00000001/PKEZ5.jpg" alt="Wood Pen Blanks (bestsellers)" onerror="this.style.background='#e8d5b7'">
+            <div class="cl-item-product-info">
+              <div class="cl-item-product-name">Wood Pen Blanks (bestsellers)</div>
+              <div class="cl-item-product-price">$1.50–$8 each</div>
+            </div>
+            <span class="cl-item-product-btn">View →</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="cl-products" id="cl-materials-products">
+        <div class="cl-products-label">Shop for this section</div>
+        <a href="https://www.pennstateind.com/store/PKCPBAPAK.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp" alt="3 Bolt Action Starter Set" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">3 Bolt Action Pen Kit Starter Set</div><div class="cl-product-price">$39.95</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/store/pen-blanks.html?Per_Page=48&Sort_By=bestsellers" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PKEZ5.jpg" alt="Pen Blanks" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">Wood Pen Blanks (bestsellers)</div><div class="cl-product-price">$1.50–$8 each</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+        <a href="https://www.pennstateind.com/store/pen-kits.html" class="cl-product">
+          <img class="cl-product-img" src="https://www.pennstateind.com/mm5/graphics/00000001/PKMJJRFREE_200x200.jpg" alt="All Pen Kits" onerror="this.style.background='#e8d5b7'">
+          <div class="cl-product-info"><div class="cl-product-name">Browse all pen kits</div><div class="cl-product-price">$3–$30 per kit</div></div>
+          <span class="cl-product-add">View →</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="section section-alt" id="complete-starter">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Complete starter sets</div>
+      <h2>Everything included.<br>Nothing to figure out.</h2>
+      <p>These bundles include a lathe, all the tooling, pen kits, blanks and supplies. One order, start turning.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <a href="https://www.pennstateind.com/store/PENPALSS.html" class="product-card featured">
+        <div class="product-featured-banner">⭐ Best for beginners</div>
+        <div class="product-img">
+          <img src="https://www.pennstateind.com/mm5/graphics/00000001/PENPALSS_384x384_2.jpg" alt="PenPal Starter Set" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'>🔧</div>'">
+        </div>
+        <div class="product-body">
+          <div class="product-label">Best entry point</div>
+          <div class="product-name">PenPal Pen Making Lathe Starter Set</div>
+          <div class="product-price-row">
+            <span class="product-price">$399.95</span>
+            <span class="product-was">$465.00</span>
+            <span class="product-save">Save 14%</span>
+          </div>
+          <div class="product-cta">Add to cart</div>
+        </div>
+      </a>
+
+      <a href="https://www.pennstateind.com/store/PENPAL.html" class="product-card">
+        <div class="product-img">
+          <img src="https://www.pennstateind.com/mm5/graphics/00000001/PENPAL_384x384_2.jpg" alt="PenPal Lathe" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'>🪵</div>'">
+        </div>
+        <div class="product-body">
+          <div class="product-label">Already have supplies?</div>
+          <div class="product-name">PenPal Pen Making Lathe (lathe only)</div>
+          <div class="product-price-row">
+            <span class="product-price">$259.95</span>
+            <span class="product-was">$299.95</span>
+            <span class="product-save">Save 13%</span>
+          </div>
+          <div class="product-cta">Add to cart</div>
+        </div>
+      </a>
+
+      <a href="https://www.pennstateind.com/store/KWL-10SSB.html" class="product-card">
+        <div class="product-img">
+          <img src="https://www.pennstateind.com/mm5/graphics/00000001/7/KWL-10SSB_2_384x384.webp" alt="Basic Starter Set" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'>⚙️</div>'">
+        </div>
+        <div class="product-body">
+          <div class="product-label">Ready to go bigger</div>
+          <div class="product-name">Basic Starter Set with 10in. Midi Lathe</div>
+          <div class="product-price-row">
+            <span class="product-price">$699.95</span>
+          </div>
+          <div class="product-cta">Add to cart</div>
+        </div>
+      </a>
+
+      <a href="https://www.pennstateind.com/store/pen-turning-starter-sets.html" class="product-card" style="display:flex;align-items:center;justify-content:center;min-height:280px;background:var(--cream);">
+        <div style="text-align:center;padding:24px;">
+          <div style="font-size:36px;margin-bottom:12px;">→</div>
+          <div style="font-size:15px;font-weight:500;color:var(--bark);margin-bottom:6px;">See all starter sets</div>
+          <div style="font-size:13px;color:var(--walnut);opacity:.6;">10+ bundles at every price point</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     GIFT THIS HOBBY
+══════════════════════════════════════════ -->
+<section class="section" id="gift-the-hobby">
+<style>
+.gift-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+  max-width: 960px; margin: 0 auto;
+}
+.gift-reasons { display: flex; flex-direction: column; gap: 20px; }
+.gift-reason {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.gift-reason-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #fdf7f0; border: 1.5px solid var(--sand);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; margin-top: 2px;
+}
+.gift-reason-text h4 {
+  font-size: 15px; font-weight: 500; color: var(--bark);
+  margin-bottom: 4px;
+}
+.gift-reason-text p { font-size: 14px; color: var(--walnut); opacity: .75; line-height: 1.5; }
+.gift-card-wrap {
+  background: var(--white);
+  border: 2px solid var(--cedar);
+  border-radius: var(--r-lg); overflow: hidden;
+}
+.gift-card-banner {
+  background: var(--cedar); color: var(--white);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-align: center; padding: 8px;
+}
+.gift-card-img img { width: 100%; display: block; object-fit: cover; }
+.gift-card-body { padding: 20px 24px 24px; }
+.gift-card-body .rec-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--bark); margin-bottom: 4px; }
+.gift-card-body .rec-desc { font-size: 13px; color: var(--walnut); opacity: .7; margin-bottom: 14px; }
+.gift-wrap-note {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--pine); font-weight: 500;
+  margin-bottom: 14px;
+}
+@media (max-width: 760px) {
+  .gift-grid { grid-template-columns: 1fr; }
+}
+</style>
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Gifting the hobby</div>
+      <h2>The gift they'll still be<br>using in ten years.</h2>
+      <p>Most people who turn pens were introduced to the craft by someone who showed them it was possible. A starter kit is how you do that.</p>
+    </div>
+    <div class="gift-grid">
+      <div class="gift-reasons">
+        <div class="gift-reason">
+          <div class="gift-reason-icon">🎯</div>
+          <div class="gift-reason-text">
+            <h4>It's a complete experience, not just a product</h4>
+            <p>The kit contains everything needed to go from box to finished pen in one sitting. The satisfaction is immediate — they'll make something on the first day.</p>
+          </div>
+        </div>
+        <div class="gift-reason">
+          <div class="gift-reason-icon">🔁</div>
+          <div class="gift-reason-text">
+            <h4>It keeps giving long after the first pen</h4>
+            <p>Once they're set up, every pen costs $5–15 in materials. The hobby builds on itself — they'll be making gifts for others too.</p>
+          </div>
+        </div>
+        <div class="gift-reason">
+          <div class="gift-reason-icon">🪵</div>
+          <div class="gift-reason-text">
+            <h4>Each pen they make will mean something</h4>
+            <p>Woodturners often use wood with a story — from a fallen tree in the yard, a piece of a grandfather's workbench. The hobby attracts people who make things that matter.</p>
+          </div>
+        </div>
+        <div class="gift-reason">
+          <div class="gift-reason-icon">👨‍👩‍👧</div>
+          <div class="gift-reason-text">
+            <h4>Family is usually how people discover this hobby</h4>
+            <p>Most woodturners were first shown by a parent, sibling or partner. Gifting the starter kit is a way to pass that on — or to start sharing it together.</p>
+          </div>
+        </div>
+      </div>
+      <div class="gift-card-wrap">
+        <div class="gift-card-banner">🎁 Most gifted starter kit</div>
+        <div class="gift-card-img">
+          <img src="penpal-kit.png" alt="PenPal Starter Set">
+        </div>
+        <div class="gift-card-body">
+          <div class="rec-name">PenPal Pen Making Lathe Starter Set</div>
+          <div class="rec-desc">Everything in one box. Unwrap it, follow the guide, make a pen.</div>
+          <div class="gift-wrap-note">🎀 Ships in a presentation box — gift-ready</div>
+          <div class="rec-price-row">
+            <span class="rec-price">$399.95</span>
+            <span class="rec-was">$465.00</span>
+            <span class="rec-save">Save $65</span>
+          </div>
+          <ul class="rec-includes" style="margin: 14px 0;">
+            <li>PenPal lathe (purpose-built for pens)</li>
+            <li>Pen mandrel &amp; barrel trimmer</li>
+            <li>3 pen kits + wood blanks</li>
+            <li>Tools, glue, sandpaper &amp; finish</li>
+            <li>Step-by-step instruction guide</li>
+          </ul>
+          <a href="https://www.pennstateind.com/store/PENPALSS.html" class="btn-card">View — $399.95</a>
+          <a href="https://www.pennstateind.com/store/pen-turning-starter-sets.html" style="display:block;text-align:center;margin-top:10px;font-size:13px;color:var(--cedar);text-decoration:none;">See all starter sets →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ALREADY HAVE A LATHE
+══════════════════════════════════════════ -->
+<section class="section" id="have-lathe">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Already have a lathe?</div>
+      <h2>The pen-specific kit<br>you still need</h2>
+      <p>Standard woodturning tools won't cut it alone. Here's what you need to add — around $120 for the full set.</p>
+    </div>
+
+    <div class="product-grid">
+      <a href="https://www.pennstateind.com/store/PKMS2SET.html" class="product-card">
+        <div class="product-img">
+          <img src="https://www.pennstateind.com/mm5/graphics/00000001/PKMS2SET_384x384_2.jpg" alt="Pen Mandrel" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'>🔩</div>'">
+        </div>
+        <div class="product-body">
+          <div class="product-label">Essential</div>
+          <div class="product-name">#2 MT Pen Mandrel Saver Package</div>
+          <div class="product-price-row"><span class="product-price">$39.95</span></div>
+          <div class="product-cta">Add to cart</div>
+        </div>
+      </a>
+
+      <a href="https://www.pennstateind.com/store/PKTRIMKIT.html" class="product-card">
+        <div class="product-img">
+          <img src="https://www.pennstateind.com/mm5/graphics/00000001/6/PKTRIMKIT_384x384.jpg" alt="Barrel Trimmer" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'>✂️</div>'">
+        </div>
+        <div class="product-body">
+          <div class="product-label">Essential</div>
+          <div class="product-name">7pc Universal Barrel Trimming System</div>
+          <div class="product-price-row"><span class="product-price">$39.95</span></div>
+          <div class="product-cta">Add to cart</div>
+        </div>
+      </a>
+
+      <a href="https://www.pennstateind.com/store/PENPRESSXL.html" class="product-card">
+        <div class="product-img">
+          <img src="https://www.pennstateind.com/mm5/graphics/00000001/7/PENPRESSXL_384x384.webp" alt="Pen Press" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'>🔨</div>'">
+        </div>
+        <div class="product-body">
+          <div class="product-label">Essential</div>
+          <div class="product-name">Assembly/Disassembly Pen Press</div>
+          <div class="product-price-row"><span class="product-price">$74.95</span></div>
+          <div class="product-cta">Add to cart</div>
+        </div>
+      </a>
+
+      <a href="https://www.pennstateind.com/store/PKCPBAPAK.html" class="product-card featured">
+        <div class="product-featured-banner">Start here for pen kits</div>
+        <div class="product-img">
+          <img src="https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp" alt="3 Bolt Action Starter Set" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'>✒️</div>'">
+        </div>
+        <div class="product-body">
+          <div class="product-label">Best first pen kit</div>
+          <div class="product-name">3 Bolt Action Pen Kit Starter Set</div>
+          <div class="product-price-row">
+            <span class="product-price">$39.95</span>
+            <span class="product-was">$50.75</span>
+            <span class="product-save">Save 21%</span>
+          </div>
+          <div class="product-cta">Add to cart</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     COST TRANSPARENCY
+══════════════════════════════════════════ -->
+<section class="section section-alt" id="cost">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Full cost breakdown</div>
+      <h2>What does it actually cost<br>to get started?</h2>
+      <p>No surprises. Here's everything you'll spend to make your first pen, then your ongoing cost per pen.</p>
+    </div>
+
+    <div class="cost-table">
+      <div class="cost-row">
+        <div>
+          <span class="cost-label">PenPal Lathe Starter Set</span>
+          <span class="cost-sub">Lathe + tools + pen kits + blanks + supplies</span>
+        </div>
+        <span class="cost-price">$399.95</span>
+      </div>
+      <div class="cost-row">
+        <div>
+          <span class="cost-label">Additional pen blanks (optional first order)</span>
+          <span class="cost-sub">10-pack to experiment with different woods</span>
+        </div>
+        <span class="cost-price">~$15–$25</span>
+      </div>
+      <div class="cost-row total">
+        <span>Total to start making pens</span>
+        <span>~$415–$425</span>
+      </div>
+
+      <div style="margin-top:32px; border-top: 1px solid var(--sand); padding-top: 24px;">
+        <div style="font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--cedar);margin-bottom:16px;">After that — ongoing cost per pen</div>
+        <div class="cost-row">
+          <div><span class="cost-label">Pen kit (hardware)</span><span class="cost-sub">Slimline: cheapest. Bolt action: most popular.</span></div>
+          <span class="cost-price">$3–$12</span>
+        </div>
+        <div class="cost-row">
+          <div><span class="cost-label">Pen blank (wood)</span><span class="cost-sub">Domestic hardwoods cheapest. Exotics cost more.</span></div>
+          <span class="cost-price">$1.50–$8</span>
+        </div>
+        <div class="cost-row">
+          <div><span class="cost-label">Finish, sandpaper (amortised)</span><span class="cost-sub">Consumables spread across many pens</span></div>
+          <span class="cost-price">~$0.50</span>
+        </div>
+        <div class="cost-row total">
+          <span>Cost per finished pen</span>
+          <span>$5–$20</span>
+        </div>
+      </div>
+
+      <div class="cost-note">
+        💡 <strong>Worth knowing:</strong> Most people who turn pens never track the cost per pen — because that's not why they do it. The startup cost is a one-time thing. After that, the materials for each pen cost less than a coffee. The value is in what you make, and who you give it to.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     WHY PEOPLE DO THIS
+══════════════════════════════════════════ -->
+<section class="section section-alt">
+<style>
+.meaning-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; max-width: 960px; margin: 0 auto;
+}
+.meaning-card {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+}
+.meaning-card .meaning-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+.meaning-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; color: var(--bark);
+  margin-bottom: 8px;
+}
+.meaning-card p { font-size: 14px; color: var(--walnut); opacity: .75; line-height: 1.6; }
+.meaning-quote {
+  max-width: 640px; margin: 48px auto 0;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 20px;
+  color: var(--bark); line-height: 1.5;
+}
+.meaning-quote cite {
+  display: block; margin-top: 12px;
+  font-style: normal; font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--walnut); opacity: .6;
+}
+@media (max-width: 700px) {
+  .meaning-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+</style>
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Why people do this</div>
+      <h2>It's not about the pen.<br>It's about what making it does.</h2>
+    </div>
+    <div class="meaning-grid">
+      <div class="meaning-card">
+        <span class="meaning-icon">🎁</span>
+        <h4>You'll give gifts people actually keep</h4>
+        <p>A handmade pen gets used every day and sits on someone's desk for years. It's one of the few things you can make that stays visible and earns a story of its own.</p>
+      </div>
+      <div class="meaning-card">
+        <span class="meaning-icon">🪵</span>
+        <h4>The material becomes personal</h4>
+        <p>Many turners use wood with a story — from a fallen tree, a family garden, a piece of reclaimed timber. What you turn it into outlasts the memory of where it came from.</p>
+      </div>
+      <div class="meaning-card">
+        <span class="meaning-icon">🧘</span>
+        <h4>You'll end each session with something tangible</h4>
+        <p>Most jobs don't give you that. Pen turning does. An hour at the lathe produces a real, finished object you can hold. That's not a small thing.</p>
+      </div>
+      <div class="meaning-card">
+        <span class="meaning-icon">📈</span>
+        <h4>Progress is visible and yours to define</h4>
+        <p>There's no certificate, no grade. You set your own bar. Most turners judge progress by the look on someone's face when they're handed a pen — not by technical perfection.</p>
+      </div>
+      <div class="meaning-card">
+        <span class="meaning-icon">👥</span>
+        <h4>You become someone who makes things</h4>
+        <p>Woodturning opens conversations wherever you go. People ask about it. You find others who do it. A solitary hobby turns out to be quietly social in ways you don't expect.</p>
+      </div>
+      <div class="meaning-card">
+        <span class="meaning-icon">🔁</span>
+        <h4>Small projects, endless depth</h4>
+        <p>A pen takes an afternoon. Mastering the finish takes months. The hobby works at any pace — and it complements rather than competes with everything else in your life.</p>
+      </div>
+    </div>
+    <blockquote class="meaning-quote">
+      "I made my first pen in an afternoon. I gave it to my daughter. She still uses it every day at school."
+      <cite>— PSI customer review</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     VIDEO GUIDES
+══════════════════════════════════════════ -->
+<section class="section section-dark" id="videos">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Watch before you start</div>
+      <h2>Step-by-step video guides</h2>
+      <p>12 videos covering every stage — from choosing a lathe to assembling your first pen.</p>
+    </div>
+
+    <div class="video-grid">
+      <a href="https://www.youtube.com/watch?v=ZsqQjJu4v3I" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/ZsqQjJu4v3I/mqdefault.jpg" alt="Things to Consider Before Buying a Mini Lathe" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Watch first</div>
+          <div class="video-title">Things to consider before buying a mini lathe</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=dq1Y0k3ehDU" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/dq1Y0k3ehDU/mqdefault.jpg" alt="What's a Pen Kit?" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Watch second</div>
+          <div class="video-title">What's a pen kit? Pen turning for beginners</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=tgpd5JkRoNo" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/tgpd5JkRoNo/mqdefault.jpg" alt="Pen Blank Basics" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Step 1</div>
+          <div class="video-title">Pen blank basics — choosing your wood</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=DbhvqGzwSAA" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/DbhvqGzwSAA/mqdefault.jpg" alt="Pen Blank Drilling" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Step 2</div>
+          <div class="video-title">Pen blank drilling basics</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=OFZTb7KEric" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/OFZTb7KEric/mqdefault.jpg" alt="Gluing Pen Tubes" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Step 3</div>
+          <div class="video-title">How to glue pen tubes into pen blanks</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=sHHCRqdLhyw" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/sHHCRqdLhyw/mqdefault.jpg" alt="Pen Turning Tool Basics" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Step 5</div>
+          <div class="video-title">Pen turning tool basics — how to shape the barrel</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=Q39LNdoS6EY" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/Q39LNdoS6EY/mqdefault.jpg" alt="Sanding Pens" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Step 6</div>
+          <div class="video-title">Tips for sanding pens to a perfect finish</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=goNfE6DSCjI" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/goNfE6DSCjI/mqdefault.jpg" alt="Pen Kit Finishing" onerror="this.style.display='none'">
+          <div class="video-play">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+        </div>
+        <div class="video-info">
+          <div class="video-num">Step 7</div>
+          <div class="video-title">Pen kit finishing basics — assembly and completion</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SOCIAL PROOF
+══════════════════════════════════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">From our customers</div>
+      <h2>What beginners say<br>after their first pen</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was convinced I'd mess it up. Followed the video, took about 3 hours for my first one including all the mistakes. Gave it to my wife and she cried. Now I've made 40."</p>
+        <div class="review-author">David R.</div>
+        <div class="review-detail">Started with PenPal Starter Set · 6 months ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Bought the bundle on a Saturday. Made my first pen that afternoon. The kit really does include everything — I didn't have to go back for any missing pieces."</p>
+        <div class="review-author">Karen M.</div>
+        <div class="review-detail">Retired teacher · First-time woodturner</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"My dad used to turn bowls when I was a kid. He passed a few years ago. I made my first pen from a branch off the oak tree in his garden. Spent more time crying than turning. Best thing I've ever made."</p>
+        <div class="review-author">Robert C.</div>
+        <div class="review-detail">Retired · Started after losing his father</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Common questions</div>
+      <h2>Things beginners worry about</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need any woodworking experience?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          None at all. Pen turning is actually how most people get into woodworking — not the other way around. The pieces are small, the lathe does most of the work, and the process is forgiving. Your first pen won't be perfect, but it will be a usable, beautiful pen. Most beginners are genuinely surprised at how good it looks.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How much space do I need?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Very little. The PenPal lathe sits on a workbench or kitchen table. You need roughly 2–3 feet of clear worktop, plus somewhere to stand. Many people start in a spare bedroom or garage corner. The main consideration is dust — work near an open window or invest in a small shop vac.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Which pen style should I start with?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          The Bolt Action pen is the most popular choice for beginners — it's simple, satisfying to make, and looks great. The Slimline is the cheapest kit if budget is the priority, but some find it slightly trickier due to its thinner profile. We include bolt action kits in our starter sets for exactly this reason.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is the PenPal lathe good enough to grow with?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          The PenPal is purpose-designed for pen turning — it excels at exactly this task. If you later want to turn larger items like bottle openers, bowls or candle holders, the 10" Midi Lathe is the upgrade path. But most dedicated pen turners stick with the PenPal indefinitely; it does what it does extremely well.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if something doesn't fit or I break a component?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          It happens — especially at first. Individual pen kit components (tubes, mechanisms, clips) are all sold separately so you can replace just the part you need. You can also call us at 1-800-377-7297 and we'll walk you through what went wrong and how to fix it. We've seen every mistake there is.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I make other things with a pen lathe?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Yes — bottle stoppers, keychains, seam rippers, crochet hooks, small handles and more all use the same basic techniques. The PenPal starter set focuses on pens to keep it simple, but once you have the skills, you'll find they transfer directly to any small turned project.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer style="background:var(--ink);color:rgba(232,213,183,.6);padding:40px 24px;text-align:center;font-size:13px;">
+  <div style="margin-bottom:8px;font-family:'Playfair Display',serif;font-size:18px;color:var(--grain);">Penn State Industries</div>
+  <div>1-800-377-7297 · Family business since 1980 · Satisfaction guaranteed</div>
+  <div style="margin-top:12px;opacity:.45;">© 2026 Penn State Industries. All rights reserved.</div>
+</footer>
+
+<script>
+// ── FAQ ──────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── SHOPPING LIST TOGGLE (per item) ─────────
+function itemToggle(itemId, sectionId) {
+  const item = document.getElementById(itemId);
+  if (!item) return;
+  const btns = item.querySelectorAll('.cl-ibtn');
+  const isOwned = item.classList.contains('item-owned');
+
+  if (isOwned) {
+    item.classList.remove('item-owned');
+    btns[0].classList.add('ibtn-need');
+    btns[1].classList.remove('ibtn-have');
+  } else {
+    item.classList.add('item-owned');
+    btns[0].classList.remove('ibtn-need');
+    btns[1].classList.add('ibtn-have');
+  }
+
+  // Update section owned count
+  const section = document.getElementById(sectionId);
+  if (!section) return;
+  const items = section.querySelectorAll('.cl-item');
+  const owned = section.querySelectorAll('.cl-item.item-owned');
+  const countEl = section.querySelector('.cl-owned-count');
+  if (countEl) {
+    if (owned.length === 0) {
+      countEl.textContent = '';
+    } else if (owned.length === items.length) {
+      countEl.textContent = '✓ All covered';
+      countEl.style.color = 'var(--moss)';
+    } else {
+      countEl.textContent = owned.length + ' of ' + items.length + ' covered';
+      countEl.style.color = '';
+    }
+  }
+  section.classList.toggle('all-owned', owned.length === items.length);
+}
+
+// ── QUIZ STATE ───────────────────────────
+const quizState = { intent: 'gift', tools: 'nothing' };
+
+const quizResults = {
+  'gift-nothing': {
+    label: '⭐ Best for your situation',
+    name: 'PenPal Pen Making Lathe Starter Set',
+    desc: 'Everything in one box — lathe, tools, pen kits, blanks and supplies. Gift-ready from day one.',
+    price: '$399.95',
+    was: '$465.00',
+    img: 'penpal-kit.png',
+    includes: ['PenPal lathe (purpose-built for pens)', 'Pen mandrel & barrel trimmer', '3 pen kits + wood blanks', 'Tools, glue, sandpaper & finish', 'Step-by-step instruction guide'],
+    url: 'https://www.pennstateind.com/store/PENPALSS.html',
+    cta: 'View starter set →'
+  },
+  'gift-some': {
+    label: '🎁 Best kit to add',
+    name: '3 Bolt Action Pen Kit Starter Set',
+    desc: 'If they already have a lathe, this kit has everything pen-specific they need. Start making pens today.',
+    price: '$39.95',
+    was: '$50.75',
+    img: 'https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp',
+    includes: ['3 bolt action pen kits', 'Wood pen blanks included', 'Perfect with any lathe'],
+    url: 'https://www.pennstateind.com/store/PKCPBAPAK.html',
+    cta: 'View kit →'
+  },
+  'gift-most': {
+    label: '🎁 Just the kits',
+    name: 'Pen Kit Starter Packages',
+    desc: 'They have the tools — just gift them a selection of pen kits and blanks to get making.',
+    price: 'From $29.95',
+    was: null,
+    img: 'https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp',
+    includes: ['Multiple styles available', 'Blanks often included', 'Everything for a finished pen'],
+    url: 'https://www.pennstateind.com/store/pen-kit-starter-packages.html',
+    cta: 'Browse pen kit starters →'
+  },
+  'self-nothing': {
+    label: '⭐ Best starting point',
+    name: 'PenPal Pen Making Lathe Starter Set',
+    desc: 'Complete setup — lathe, tools, pen kits, blanks and supplies. One order, start turning.',
+    price: '$399.95',
+    was: '$465.00',
+    img: 'penpal-kit.png',
+    includes: ['PenPal lathe (purpose-built for pens)', 'Pen mandrel & barrel trimmer', '3 pen kits + wood blanks', 'Tools, glue, sandpaper & finish', 'Step-by-step instruction guide'],
+    url: 'https://www.pennstateind.com/store/PENPALSS.html',
+    cta: 'View starter set →'
+  },
+  'self-some': {
+    label: '✅ Add these',
+    name: 'Pen Turning Tools for Beginners',
+    desc: 'The pen-specific tooling you still need: mandrel, barrel trimmer, pen press and your first pen kit.',
+    price: 'From $39.95 each',
+    was: null,
+    img: 'https://www.pennstateind.com/mm5/graphics/00000001/PKMS2SET_384x384_2.jpg',
+    includes: ['Pen mandrel — holds blanks on the lathe', 'Barrel trimmer — squares the ends', 'Pen press — assembles the finished pen', 'Pen kit starter set — 3 kits + blanks'],
+    url: 'https://www.pennstateind.com/store/pen-turning-supplies.html',
+    cta: 'Browse pen supplies →'
+  },
+  'self-most': {
+    label: '✅ You\'re ready',
+    name: 'Pen Kit Starter Packages',
+    desc: 'You have the tools — just pick up a starter kit and some blanks, and start turning today.',
+    price: 'From $29.95',
+    was: null,
+    img: 'https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp',
+    includes: ['Multiple kit styles available', 'Blanks often included', 'Ready to turn right away'],
+    url: 'https://www.pennstateind.com/store/pen-kit-starter-packages.html',
+    cta: 'Browse pen kit starters →'
+  }
+};
+
+function quizSelect(el) {
+  const step = el.dataset.step;
+  el.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  if (step == '0') quizState.intent = el.dataset.val;
+  if (step == '1') quizState.tools  = el.dataset.val;
+}
+
+function quizNext(toStep) {
+  document.getElementById('qstep-' + (toStep - 1)).classList.remove('active');
+  document.getElementById('qstep-' + toStep).classList.add('active');
+  document.getElementById('quiz-step-label').textContent = 'Step ' + (toStep + 1) + ' of 2';
+  document.querySelectorAll('.quiz-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i < toStep) d.classList.add('done');
+    if (i === toStep) d.classList.add('active');
+  });
+}
+
+function quizBack(toStep) {
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('qresult').classList.remove('active');
+  document.getElementById('qstep-' + toStep).classList.add('active');
+  document.getElementById('quiz-step-label').textContent = 'Step ' + (toStep + 1) + ' of 2';
+  document.querySelectorAll('.quiz-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i < toStep) d.classList.add('done');
+    if (i === toStep) d.classList.add('active');
+  });
+}
+
+function quizShowResult() {
+  const key = quizState.intent + '-' + quizState.tools;
+  const r = quizResults[key] || quizResults['gift-nothing'];
+
+  document.getElementById('qresult-img').src = r.img;
+  document.getElementById('qresult-label').textContent = r.label;
+  document.getElementById('qresult-name').textContent = r.name;
+  document.getElementById('qresult-desc').textContent = r.desc;
+  document.getElementById('qresult-price').innerHTML = r.price +
+    (r.was ? ' <span style="font-size:13px;opacity:.45;text-decoration:line-through;font-weight:400;">' + r.was + '</span>' : '');
+
+  const ul = document.getElementById('qresult-includes');
+  ul.innerHTML = r.includes.map(i => '<li>' + i + '</li>').join('');
+
+  const cta = document.getElementById('qresult-cta');
+  cta.href = r.url;
+  cta.textContent = r.cta;
+
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('qresult').classList.add('active');
+  document.getElementById('quiz-step-label').textContent = 'Your recommendation';
+  document.querySelectorAll('.quiz-dot').forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
+}
+
+function quizRestart() {
+  quizState.intent = 'gift';
+  quizState.tools = 'nothing';
+  document.getElementById('qresult').classList.remove('active');
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('qstep-0').classList.add('active');
+  document.getElementById('quiz-step-label').textContent = 'Step 1 of 2';
+  document.querySelectorAll('.quiz-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i === 0) d.classList.add('active');
+  });
+  // reset selections
+  document.querySelectorAll('[data-step="0"]')[0].classList.add('selected');
+  document.querySelectorAll('[data-step="0"]')[1].classList.remove('selected');
+  document.querySelectorAll('[data-step="1"]').forEach((o, i) => { o.classList.toggle('selected', i === 0); });
+}
+
+// ── PROJECT SELECTOR ─────────────────────
+const projectData = {
+  pen: {
+    note: 'A pen kit includes the metal hardware and brass tubes. You\'ll also need pen blanks — one per pen.',
+    kitItem: 'Pen Kit (bolt action recommended for beginners)',
+    kitDesc: 'Includes all metal hardware and brass tubes — one per pen',
+    kitUrl: 'https://www.pennstateind.com/store/pen-kit-starter-packages.html',
+    kitImg: 'https://www.pennstateind.com/mm5/graphics/00000001/7/PKCPBAPAK_384x384.webp',
+    kitName: '3 Bolt Action Pen Kit Starter Set',
+    kitPrice: '$39.95',
+    blankItem: 'Pen Blanks (wood)',
+    blankDesc: 'Standard ¾" × 5" blocks — one blank per pen',
+    blankUrl: 'https://www.pennstateind.com/store/pen-blanks.html',
+    blankImg: 'https://www.pennstateind.com/mm5/graphics/00000001/PKEZ5.jpg',
+    blankName: 'Wood Pen Blanks',
+    blankPrice: '$1.50–$8 each'
+  },
+  'bottle-stopper': {
+    note: 'Bottle stoppers use a different kit and blank shape — shorter and wider than pen blanks.',
+    kitItem: 'Bottle Stopper Kit',
+    kitDesc: 'Includes the stopper mechanism and hardware — one per project',
+    kitUrl: 'https://www.pennstateind.com/store/bottle-stopper-kits.html',
+    kitImg: 'https://www.pennstateind.com/mm5/graphics/00000001/BSKIT_384x384.jpg',
+    kitName: 'Bottle Stopper Kits',
+    kitPrice: 'From $4.95',
+    blankItem: 'Bottle Stopper Blanks',
+    blankDesc: 'Wider turning blanks sized for stoppers',
+    blankUrl: 'https://www.pennstateind.com/store/bottle-stopper-blanks-2.html',
+    blankImg: 'https://www.pennstateind.com/mm5/graphics/00000001/BSBLANK.jpg',
+    blankName: 'Bottle Stopper Blanks',
+    blankPrice: 'From $1.50'
+  },
+  'seam-ripper': {
+    note: 'A beautiful gift for anyone who sews. Uses the same mandrel and technique as a pen.',
+    kitItem: 'Seam Ripper Kit',
+    kitDesc: 'Includes the blade and hardware — one per project',
+    kitUrl: 'https://www.pennstateind.com/store/seam-ripper-kits.html',
+    kitImg: 'https://www.pennstateind.com/mm5/graphics/00000001/SRKIT.jpg',
+    kitName: 'Seam Ripper Kits',
+    kitPrice: 'From $5.95',
+    blankItem: 'Pen Blanks (standard)',
+    blankDesc: 'Standard ¾" × 5" blocks work for seam rippers too',
+    blankUrl: 'https://www.pennstateind.com/store/pen-blanks.html',
+    blankImg: 'https://www.pennstateind.com/mm5/graphics/00000001/PKEZ5.jpg',
+    blankName: 'Wood Pen Blanks',
+    blankPrice: '$1.50–$8 each'
+  },
+  'bottle-opener': {
+    note: 'A crowd-pleaser. Uses a similar mandrel technique to a pen, with a metal opener insert.',
+    kitItem: 'Bottle Opener Kit',
+    kitDesc: 'Includes the opener mechanism and hardware',
+    kitUrl: 'https://www.pennstateind.com/store/bottle-opener-kits.html',
+    kitImg: 'https://www.pennstateind.com/mm5/graphics/00000001/BOKIT.jpg',
+    kitName: 'Bottle Opener Kits',
+    kitPrice: 'From $6.95',
+    blankItem: 'Pen Blanks or Spindle Blanks',
+    blankDesc: 'Standard or slightly larger blanks depending on the kit',
+    blankUrl: 'https://www.pennstateind.com/store/pen-blanks.html',
+    blankImg: 'https://www.pennstateind.com/mm5/graphics/00000001/PKEZ5.jpg',
+    blankName: 'Wood Pen Blanks',
+    blankPrice: '$1.50–$8 each'
+  },
+  keychain: {
+    note: 'One of the quickest first projects — great for practising before your first pen.',
+    kitItem: 'Keychain Kit',
+    kitDesc: 'Includes the ring hardware and fittings',
+    kitUrl: 'https://www.pennstateind.com/store/key-chain-kits.html',
+    kitImg: 'https://www.pennstateind.com/mm5/graphics/00000001/KCKIT.jpg',
+    kitName: 'Keychain Kits',
+    kitPrice: 'From $3.95',
+    blankItem: 'Pen Blanks (short cut)',
+    blankDesc: 'Standard blanks cut shorter for keychain length',
+    blankUrl: 'https://www.pennstateind.com/store/pen-blanks.html',
+    blankImg: 'https://www.pennstateind.com/mm5/graphics/00000001/PKEZ5.jpg',
+    blankName: 'Wood Pen Blanks',
+    blankPrice: '$1.50–$8 each'
+  },
+  'crochet-hook': {
+    note: 'A thoughtful gift for anyone who knits or crochets. The handle uses a standard pen blank.',
+    kitItem: 'Crochet Hook Kit',
+    kitDesc: 'Includes the hook insert in your choice of size',
+    kitUrl: 'https://www.pennstateind.com/store/crochet-hook-kits.html',
+    kitImg: 'https://www.pennstateind.com/mm5/graphics/00000001/CHKIT.jpg',
+    kitName: 'Crochet Hook Kits',
+    kitPrice: 'From $4.95',
+    blankItem: 'Pen Blanks (standard)',
+    blankDesc: 'Standard ¾" × 5" blocks work for crochet hook handles',
+    blankUrl: 'https://www.pennstateind.com/store/pen-blanks.html',
+    blankImg: 'https://www.pennstateind.com/mm5/graphics/00000001/PKEZ5.jpg',
+    blankName: 'Wood Pen Blanks',
+    blankPrice: '$1.50–$8 each'
+  }
+};
+
+function selectProject(card) {
+  // Toggle this card
+  card.classList.toggle('selected');
+
+  // Collect all selected projects
+  const selected = [...document.querySelectorAll('.make-card.selected')];
+
+  // Always keep at least one selected
+  if (selected.length === 0) {
+    card.classList.add('selected');
+    return;
+  }
+
+  const project = selected[selected.length - 1].dataset.project; // use last selected for materials update
+  const d = projectData[project];
+  if (!d) return;
+
+  // Update note
+  const names = selected.map(c => c.querySelector('.make-card-name').textContent);
+  const noteEl = document.getElementById('project-note');
+  if (selected.length === 1) {
+    noteEl.textContent = d.note;
+  } else {
+    noteEl.textContent = 'Great mix of projects! Materials below reflect the ' + names[names.length - 1] + ' kit. Each project uses similar tools — only the kit and blank change.';
+  }
+
+  // Update core materials section based on last selected
+  const itemsEl = document.querySelector('#cl-materials .cl-items');
+  itemsEl.innerHTML = `
+    <div class="cl-item">
+      <input type="checkbox" checked>
+      <div class="cl-item-text">
+        <span class="cl-item-name">${d.kitItem}</span>
+        <span class="cl-item-desc">${d.kitDesc}</span>
+      </div>
+    </div>
+    <div class="cl-item">
+      <input type="checkbox" checked>
+      <div class="cl-item-text">
+        <span class="cl-item-name">${d.blankItem}</span>
+        <span class="cl-item-desc">${d.blankDesc}</span>
+      </div>
+    </div>`;
+
+  const productsEl = document.querySelector('#cl-materials .cl-products');
+  productsEl.innerHTML = `
+    <a href="${d.kitUrl}" class="cl-product">
+      <img class="cl-product-img" src="${d.kitImg}" alt="${d.kitName}" onerror="this.style.background='#e8d5b7'">
+      <div class="cl-product-info">
+        <div class="cl-product-name">${d.kitName}</div>
+        <div class="cl-product-price">${d.kitPrice}</div>
+      </div>
+      <span class="cl-product-add">View →</span>
+    </a>
+    <a href="${d.blankUrl}" class="cl-product">
+      <img class="cl-product-img" src="${d.blankImg}" alt="${d.blankName}" onerror="this.style.background='#e8d5b7'">
+      <div class="cl-product-info">
+        <div class="cl-product-name">${d.blankName}</div>
+        <div class="cl-product-price">${d.blankPrice}</div>
+      </div>
+      <span class="cl-product-add">View →</span>
+    </a>`;
+
+  const header = document.querySelector('#cl-materials .cl-header h3');
+  if (header) header.textContent = 'Core Materials — ' + names.join(' + ');
+
+  document.getElementById('cl-materials').classList.remove('is-owned');
+}
+</script>
+</body>
+</html>
